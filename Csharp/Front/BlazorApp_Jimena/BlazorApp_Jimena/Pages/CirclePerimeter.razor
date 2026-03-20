@@ -1,0 +1,38 @@
+﻿@page "/CirclePerimeter"
+@using BlazorApp_Jimena.IApiService
+@using Modelo.RequestEntity
+
+@inject ICircleService api
+
+<h3>Perimetro de  un circulo</h3>
+<hr/>
+
+<p>Introduce un color: </p>
+<input @bind="color" placeholder="Color" />
+
+<p>Intoduce el radio del circulo: </p>
+<input @bind="radio" placeholder="Radio" />
+<button type="button" @onclick="CalcularPerimetreCircle">Calcular</button>
+
+<p>El perimetro del circulo es: <strong>@perimetre</strong> y el color es: @color</p>
+
+
+@code {
+    private double radio { get; set; }
+    private string color { get; set; }
+    private double perimetre { get; set; }
+
+    async Task CalcularPerimetreCircle()
+    {
+        try
+        {
+            CircleRequest request = new CircleRequest { Color = color, Radius = radio };
+            var result = await api.GetCirclePerimeter(request);
+            perimetre = result.Perimeter;
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine("Error: " + e.Message);
+        }
+    }
+}

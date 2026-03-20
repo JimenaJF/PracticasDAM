@@ -1,0 +1,112 @@
+﻿@page "/Book"
+@using Modelo.RequestEntity;
+@using Modelo.ResponseEntity;
+
+@using BlazorApp_Jimena.IApiService
+
+@inject IBook BookApi
+
+
+
+<h3>Agregar un nuevo libro</h3>
+<hr />
+
+<div>
+    <label>Título:</label><br />
+    <input @bind="newBook.title" /><br /><br />
+
+    <label>Autor:</label><br />
+    <input @bind="newBook.author" /><br /><br />
+
+    <label>Número de páginas:</label><br />
+    <input type="number" @bind="newBook.pageCount" /><br /><br />
+
+    <button @onclick="SaveBook">Guardar libro</button>
+</div>
+
+
+<hr />
+
+<h3>Buscar libro por ID</h3>
+
+<label>ID del libro:</label>
+<br />
+<input @bind="searchIdText" placeholder="Introduce un id valido" style="width:300px" />
+
+<button @onclick="LoadBook">Buscar</button>
+
+
+@if (book is not null)
+{
+    <hr />
+    <h3>Informacion libro</h3>
+
+    <p><strong>ID:</strong> @book.id</p>
+    <p><strong>Título:</strong> @book.title</p>
+    <p><strong>Autor:</strong> @book.author</p>
+    <p><strong>Páginas:</strong> @book.pageCount</p>
+}
+
+@code {
+
+    private BookRequest newBook = new();
+    private string? message;
+
+    private async Task SaveBook()
+    {
+        try
+        {
+            Console.WriteLine(System.Text.Json.JsonSerializer.Serialize(newBook));
+            var savedBook = await BookApi.SaveBook(newBook);
+
+            message = $"Libro '{savedBook.title}' guardado correctamente. ID: {savedBook.id}";
+
+            searchIdText = savedBook.id.ToString();
+
+            newBook = new BookRequest
+            {
+                    title = "",
+                    author = "",
+                    pageCount = 0
+            };
+        
+        }
+        catch (Exception ex)
+        {
+            message = "Error al guardar: " + ex.Message;
+        }
+    }
+
+
+    private string searchIdText { get; set; } = string.Empty;
+    private BookResponse? book;
+    private string? errorMessage;
+
+    private async Task LoadBook()
+    {
+        errorMessage = null;
+
+        if (!Guid.TryParse(searchIdText, out Guid bookId))
+        {
+            errorMessage = "El ID introducido no es un GUID válido.";
+            book = null;
+            return;
+        }
+
+        try
+        {
+            book = await BookApi.GetBookInfo(bookId);
+
+            if (book == null || book.id == Guid.Empty)
+            {
+                errorMessage = "No se encontró el libro.";
+                book = null;
+            }
+        }
+        catch (Exception ex)
+        {
+            errorMessage = "Error al obtener el libro: " + ex.Message;
+            book = null;
+        }
+    }
+}

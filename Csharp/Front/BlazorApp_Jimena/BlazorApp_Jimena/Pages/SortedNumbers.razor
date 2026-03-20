@@ -1,0 +1,36 @@
+﻿@page "/SortedNumbers"
+@using BlazorApp_Jimena.IApiService
+
+@inject INumberService _api
+
+<h3>Lista ordenada de numeros</h3>
+<hr />
+
+<p>Introduce numeros de manera desordenada: </p>
+<input @bind="inputNumbers" placeholder="ej: 1,5,3,8" />
+<input type="button" @onclick="SortNumbers" value="Ordenar" />
+
+<p>LISTA DE MANERA ORDENADA ASCENDENTE -> <strong>@string.Join(", ", resultList)</strong></p>
+
+@code {
+    private String inputNumbers { get; set; } = string.Empty;
+    private List<int> resultList { get; set; } = new();
+
+    async Task SortNumbers()
+    {
+        try
+        {
+
+            var list = inputNumbers.Split(',', StringSplitOptions.RemoveEmptyEntries).Select(x => int.Parse(x.Trim())).ToList();
+
+            resultList = await _api.GetSortedNumbers(list);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Error: " + ex.Message);
+        }
+    }
+
+}
+
+

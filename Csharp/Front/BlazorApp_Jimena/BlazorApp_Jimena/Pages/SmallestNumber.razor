@@ -1,0 +1,33 @@
+﻿@page "/SmallestNumber"
+@using BlazorApp_Jimena.IApiService
+
+@inject INumberService _api
+
+<h3>El numero mas pequeño</h3>
+<hr/>
+
+<p>Introduce numeros aleatoriamente: </p>
+<input @bind="inputNumbers" placeholder="ej: 1,5,3,8" />
+<input type="button" @onclick="GetSmallestNumber" value="Obtener el numero mas pequeño" />
+
+<p>EL NUMERO MAS PEQUEÑO ES -> <strong>@resultSmallestNumber</strong></p>
+
+@code {
+    private string inputNumbers { get; set; } = string.Empty;
+    private int resultSmallestNumber { get; set; }
+   
+    async Task GetSmallestNumber()
+    {
+        try
+        {
+            var list = inputNumbers.Split(',', StringSplitOptions.RemoveEmptyEntries).Select(x => int.Parse(x.Trim())).ToList();
+            
+            resultSmallestNumber = await _api.GetSmallestNumber(list);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Error: " + ex.Message);
+        }
+    }
+
+}

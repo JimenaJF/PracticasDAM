@@ -1,0 +1,32 @@
+﻿@page "/PrimeNumber"
+@using BlazorApp_Jimena.IApiService
+
+@inject INumberService _api
+
+<h3>¿Es un número primo?</h3>
+<hr />
+
+<p>Introduce un numero: </p>
+<input typeof = "number" @bind="inputNumber" placeholder="ej: 8" />
+<input type="button" @onclick="GetPrimeNumber" value="validar" />
+
+<p><strong>@(resultPrimeNumber is null? "" : resultPrimeNumber.ToString())</strong></p>
+
+@code {
+    private int inputNumber { get; set; }
+    private bool? resultPrimeNumber { get; set; }
+
+    async Task GetPrimeNumber()
+    {
+        try
+        {
+
+            resultPrimeNumber = await _api.GetPrimeNumber(inputNumber);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Error: " + ex.Message);
+        }
+    }
+
+}

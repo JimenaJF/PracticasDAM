@@ -1,0 +1,46 @@
+﻿@page "/TriangleArea"
+using Modelo.RequestEntity;
+
+
+@using BlazorApp_Jimena.IApiService
+@using Modelo.RequestEntity
+@using Modelo.ResponseEntity
+
+@inject ITriangleService _api
+
+<h3>Area de un Triángulo</h3>
+<hr />
+
+    <p>Introduce la base:</p>
+    <input typeof="number" @bind="baseTr" placeholder="Base" type="number" />
+    <p>Introduce la Altura:</p>
+    <input typeof="number" @bind="heightTr" placeholder="Altura" type="number"/>
+    <button type="button" @onclick="CalcularArea">Calcular</button>
+
+
+<p>El área del triángulo es: <strong>@area</strong></p>
+
+@code {
+
+    private double baseTr { get; set; }
+    private double heightTr { get; set; }
+    private double area { get; set; }
+
+    async Task CalcularArea()
+    {
+
+        try
+        {
+            TriangleRequest triangle = new TriangleRequest{BaseTr = baseTr, HeightTr= heightTr};
+
+            var result = await _api.GetTriangleArea(triangle);
+            area = result.Area;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Error: " + ex.Message);
+        }
+
+    }
+
+}

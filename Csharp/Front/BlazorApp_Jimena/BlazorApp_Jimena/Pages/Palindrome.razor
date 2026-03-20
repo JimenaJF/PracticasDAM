@@ -1,0 +1,32 @@
+﻿@page "/Palindrome"
+@using BlazorApp_Jimena.IApiService
+
+@inject IPalindromeService _api
+
+<h3>Palindrome</h3>
+<hr/>
+
+<p>Introduce una palabra o frase para verificar si es un palíndromo :</p>
+<input type="text" @bind="inputText" placeholder="Palabra o frase" />
+<input type="button" @onclick="CheckPalindrome" value="Verificar" />
+
+<p>La palabra es palindrome? : <strong>@(resultPalindrome is null ? "" : resultPalindrome.ToString())</strong></p>
+
+@code {
+
+    private string inputText { get; set; } = string.Empty;
+    private bool? resultPalindrome { get; set; }
+
+    async Task CheckPalindrome()
+    {
+        try
+        {
+            resultPalindrome = await _api.IsPalindrome(inputText);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Error: " + ex.Message);
+        }
+    }
+
+}

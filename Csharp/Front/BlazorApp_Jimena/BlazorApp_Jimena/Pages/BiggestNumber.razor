@@ -1,0 +1,33 @@
+﻿@page "/BiggestNumber"
+@using BlazorApp_Jimena.IApiService
+
+@inject INumberService _api
+
+<h3>El numero mas grande</h3>
+<hr/>
+
+<p>Introduce numeros aleatoriamente: </p>
+<input @bind="inputNumbers" placeholder="ej: 1,5,3,8" />
+<input type="button" @onclick="GetBiggestNumber" value="Obtener el numero mas grande" />
+
+<p>EL NUMERO MAS GRANDE ES -> <strong>@resultBiggestNumber</strong></p>
+
+@code {
+    private string inputNumbers { get; set; } = string.Empty;
+    private int resultBiggestNumber { get; set; }
+   
+    async Task GetBiggestNumber()
+    {
+        try
+        {
+            var list = inputNumbers.Split(',', StringSplitOptions.RemoveEmptyEntries).Select(x => int.Parse(x.Trim())).ToList();
+            
+            resultBiggestNumber = await _api.GetBiggestNumber(list);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Error: " + ex.Message);
+        }
+    }
+
+}
