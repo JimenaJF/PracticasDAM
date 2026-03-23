@@ -12,8 +12,8 @@ using webApi_Jimena.Data;
 namespace webApi_Jimena.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20260320130331_CircleInitial")]
-    partial class CircleInitial
+    [Migration("20260323102553_BookInitial")]
+    partial class BookInitial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -25,6 +25,33 @@ namespace webApi_Jimena.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
+
+            modelBuilder.Entity("webApi_Jimena.Models.BookModel", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("id"));
+
+                    b.Property<DateTime>("Timestamp")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("author")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<int>("pageCount")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("title")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("id");
+
+                    b.ToTable("BookModelCrud", "JJF");
+                });
 
             modelBuilder.Entity("webApi_Jimena.Models.CircleModel", b =>
                 {
@@ -52,7 +79,7 @@ namespace webApi_Jimena.Migrations
 
                     b.HasKey("id");
 
-                    b.ToTable("CircleModel", "JJF");
+                    b.ToTable("CircleCalculations", "JJF");
                 });
 
             modelBuilder.Entity("webApi_Jimena.Models.TriangleModel", b =>
@@ -77,7 +104,7 @@ namespace webApi_Jimena.Migrations
 
                     b.HasKey("id");
 
-                    b.ToTable("TriangleModel", "JJF");
+                    b.ToTable("TriangleCalculations", "JJF");
                 });
 #pragma warning restore 612, 618
         }

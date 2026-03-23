@@ -3,6 +3,7 @@ using webApi_Jimena.Interface;
 using webApi_Jimena.RequestEntity;
 using webApi_Jimena.ResponseEntity;
 using webApi_Jimena.Models;
+using System.Collections;
 
 namespace webApi_Jimena.controllerTriangle
 {
@@ -42,17 +43,9 @@ namespace webApi_Jimena.controllerTriangle
 
 
         [HttpGet("/GetAll")]
-        public async Task<IActionResult> GetAll()
+        public async Task<IEnumerable> GetAll()
         {
-            try
-            {
-                var List = await _service.GetAll();
-                return Ok(List);
-            }
-            catch (Exception ex)
-            {
-                return BadRequest($"Error al obtener los registros: {ex.Message}");
-            }
+            return await _service.GetAll();
         }
 
         [HttpGet("/GetById/{id}")]
@@ -92,41 +85,26 @@ namespace webApi_Jimena.controllerTriangle
         }
 
         [HttpDelete("/Delete/{id}")]
-        public async Task<IActionResult> Delete(int id)
+        public async Task<bool> Delete(int id)
         {
             try
             {
                 bool deleted = await _service.Delete(id);
 
                 if (!deleted)
-                    return NotFound("No se encontró el registro a eliminar");
+                    throw new Exception("error al borrar el circulo");
 
-                return Ok($"Registro {id} eliminado correctamente.");
+                return true;
             }
             catch (Exception ex)
             {
-                return BadRequest($"Error al eliminar el registro: {ex.Message}");
+                throw new Exception (ex.StackTrace);
             }
         }
         [HttpPost("/Create")]
-        public async Task<IActionResult> Create([FromBody] TriangleModel triangleModel)
+        public async Task<TriangleModel> Create([FromBody] TriangleModel triangleModel)
         {
-            try
-            {
-                double area = _service.calculateArea(triangleModel.BaseTr, triangleModel.HeightTr);
-
-                triangleModel.Area = area;
-                triangleModel.Timestamp = DateTime.UtcNow;
-
-                var result = await _service.Create(triangleModel);
-
-                return Ok(result);
-            }
-            catch (Exception ex)
-            {
-                return BadRequest($"Error al crear el registro: {ex.Message}");
-
-            }
+           return await _service.Create(triangleModel);
         }
     }
 }

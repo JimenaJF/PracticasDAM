@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using webApi_Jimena.Models;
-using webApi_Jimena.RequestEntity;
 namespace webApi_Jimena.Interface
 {
     /// <summary>
@@ -32,3 +31,4 @@ namespace webApi_Jimena.Interface
 
     }
 }
+ 

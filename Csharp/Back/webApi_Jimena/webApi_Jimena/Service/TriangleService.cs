@@ -11,7 +11,6 @@ namespace webApi_Jimena.ServiceTriangle
     public class TriangleService: ItriangleService
     {
         private readonly AppDbContext _context;
-        private readonly ItriangleService _itriangleService;
 
         public TriangleService(AppDbContext context)
         {
@@ -95,7 +94,7 @@ namespace webApi_Jimena.ServiceTriangle
                 return existing;
             }
             catch (Exception e) {
-                throw new Exception("error al crear un triangulo" + e.StackTrace);
+                throw new Exception("error al actualizar un triangulo" + e.StackTrace);
 
             }
         }

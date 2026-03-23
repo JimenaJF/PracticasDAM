@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using webApi_Jimena.Interface;
+using webApi_Jimena.Models;
 using webApi_Jimena.RequestEntity;
 namespace webApi_Jimena.Controller
 {
@@ -104,7 +105,82 @@ namespace webApi_Jimena.Controller
             int pageCount = _bookService.getPageCountById(id);
             return pageCount != -1 ? Ok(pageCount) : NotFound("Book not found");
 
-        } 
+        }
+
+        //CRUD
+
+        //Create
+        [HttpPost("/CreateBook")]
+        public async Task<BookModel> Create([FromBody]BookModel bookModel)
+        {
+            return await _bookService.Create(bookModel);
+        }
+
+        [HttpGet("/GetAllBooks")]
+        public async Task<IEnumerable<BookModel>> GetAll() 
+        {
+            return await _bookService.GetAll();
+        }
+
+        [HttpGet("GetBookById/{id}")]
+        public async Task<BookModel?> GetById(int id)
+        {
+            try
+            {
+                var book = await _bookService.GetById(id);
+                if (book == null)
+                {
+                    throw new Exception("No se ha podido encontrar el libro deseado");
+
+                }
+
+                return book;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Ha ocurrido un error" +  ex.StackTrace);
+            }
+        }
+
+        [HttpPut("UpdateBook/{id}")]
+        public async Task<IActionResult> Update(int id, BookModel bookModel)
+        {
+            try 
+            {
+                var updated = await _bookService.Update(id, bookModel);
+                if (updated == null) 
+                {
+                    return NotFound();
+                }
+                return Ok(updated);
+
+            }
+            catch (Exception ex)
+            {
+                return BadRequest($"Error al actualizar el libro: {ex.Message}");
+            }
+        }
+
+        [HttpDelete("Delete/{id}")]
+        public async Task<bool> Delete(int id)
+        {
+            try
+            {
+                bool deleted = await _bookService.Delete(id);
+
+                if (!deleted)
+                    throw new Exception("error al borrar el libro");
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.StackTrace);
+            }
+        }
+
+
+
 
     }
 }

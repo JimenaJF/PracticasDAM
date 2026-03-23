@@ -1,4 +1,6 @@
-﻿using webApi_Jimena.RequestEntity;
+﻿using System.Threading.Tasks;
+using webApi_Jimena.Models;
+using webApi_Jimena.RequestEntity;
 using webApi_Jimena.ResponseEntity;
 
 namespace webApi_Jimena.Interface
@@ -47,5 +49,20 @@ namespace webApi_Jimena.Interface
         /// <param name="id">The unique identifier of the entity for which to retrieve the page count.</param>
         /// <returns>The number of pages associated with the specified identifier. Returns 0 if no pages are found.</returns>
         public int getPageCountById(Guid id);
+
+        // crud
+        Task<BookModel> Create(BookModel bookModel);
+
+        //obtener todos - R
+        Task<IEnumerable<BookModel>> GetAll();
+
+        //Rrad by Id
+        Task<BookModel?> GetById(int id);
+
+        //Update
+        Task<BookModel?> Update(int id, BookModel bookModel);
+
+        //Delete
+        Task<bool> Delete(int id);
     }
 }

@@ -5,22 +5,22 @@
     /// </summary>
     public class BookRequest
     {
-        public Guid id { get; set; } = Guid.NewGuid();
+        public required Guid id { get; set; } = Guid.NewGuid();
 
         /// <summary>
         /// Gets or sets the title associated with the object.
         /// </summary>
-        public string title { get; set; }
+        public required string title { get; set; }
 
         /// <summary>
         /// Gets or sets the name of the author associated with the content.
         /// </summary>
-        public string author { get; set; }
+        public required string author { get; set; }
 
         /// <summary>
         /// Gets or sets the total number of pages associated with the content.
         /// </summary>
-        public int pageCount { get; set; }
+        public required int pageCount { get; set; }
 
        
     }

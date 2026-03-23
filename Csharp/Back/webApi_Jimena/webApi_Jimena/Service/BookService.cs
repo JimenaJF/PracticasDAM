@@ -1,4 +1,7 @@
-﻿using webApi_Jimena.Interface;
+﻿using Microsoft.EntityFrameworkCore;
+using webApi_Jimena.Data;
+using webApi_Jimena.Interface;
+using webApi_Jimena.Models;
 using webApi_Jimena.RequestEntity;
 using webApi_Jimena.ResponseEntity;
 
@@ -16,7 +19,15 @@ namespace webApi_Jimena.Service
         /// <summary>
         /// Represents the collection of books indexed by their unique identifiers.
         /// </summary>
+
+        private readonly AppDbContext _context;
+
         private readonly Dictionary<Guid, BookResponse> books = [];
+
+        public BookService(AppDbContext context)
+        {
+            _context = context;
+        }
 
         /// <summary>
         /// Saves a new book to the collection. If the provided book request contains an empty identifier, a new unique Id is generated. If a book with the same identifier already exists, the method returns null to indicate a conflict. Otherwise, the new book is added to the collection and returned as a response.
@@ -94,8 +105,77 @@ namespace webApi_Jimena.Service
         {
             return books.TryGetValue(id, out BookResponse? bookFound) ? bookFound.pageCount : -1;
         }
-         
 
-       
+        public async Task<BookModel> Create(BookModel bookModel)
+        {
+            try 
+            {
+                bookModel.Timestamp = DateTime.UtcNow;
+
+                _context.BookModelCrud.Add(bookModel);
+                await _context.SaveChangesAsync();
+                return bookModel;
+            }
+            catch (Exception e)
+            {
+                throw new Exception("error al crear un libro" + e.StackTrace);
+            }
+
+        }
+
+        public async Task<IEnumerable<BookModel>> GetAll()
+        {
+            return await _context.BookModelCrud.ToListAsync();
+        }
+
+        public async Task<BookModel?> GetById(int id)
+        {
+            return await _context.BookModelCrud.FindAsync(id);
+        }
+
+        public async Task<BookModel?> Update(int id, BookModel bookModel)
+        {
+            try 
+            {
+                var existing = await _context.BookModelCrud.FindAsync(id);
+                if (existing == null)
+                {
+                    return null;
+                }
+
+                existing.title = bookModel.title;
+                existing.author = bookModel.title;
+                existing.pageCount = bookModel.pageCount;
+                existing.Timestamp = DateTime.UtcNow;
+
+                await _context.SaveChangesAsync();
+                return existing;
+            }
+            catch (Exception e)
+            {
+                throw new Exception("error al actualizar el libro" + e.StackTrace);
+
+            }
+        }
+
+        public async Task<bool> Delete(int id)
+        {
+            try
+            {
+                var book = await _context.BookModelCrud.FindAsync(id);
+
+                if (book == null)
+                    return false;
+
+                _context.BookModelCrud.Remove(book);
+                await _context.SaveChangesAsync();
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("No se ha podido borrar el libro deseado" + ex.StackTrace);
+            }
+        }
     }
 }

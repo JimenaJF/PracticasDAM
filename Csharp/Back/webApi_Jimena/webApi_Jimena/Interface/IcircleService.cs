@@ -1,4 +1,6 @@
-﻿namespace webApi_Jimena.Interface
+﻿using webApi_Jimena.Models;
+
+namespace webApi_Jimena.Interface
 {
     /// <summary>
     /// Provides methods for calculating the area and perimeter of a circle based on its radius.
@@ -18,5 +20,23 @@
         /// <param name="R"></param>
         /// <returns></returns>
         public double calculatePerimeterCircle(double R);
+
+        //Crud
+        //create
+        Task<CircleModel> Create(CircleModel circleModel);
+
+        //read
+        Task<IEnumerable<CircleModel>> GetAll();
+
+        //Read by by
+        Task<CircleModel?> GetById(int id);
+
+        //update
+        Task<CircleModel?> Update(int id, CircleModel circleModel);
+
+        //delete
+        Task<bool> Delete(int id);
+
+
     }
 }

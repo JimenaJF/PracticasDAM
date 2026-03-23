@@ -7,7 +7,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace webApi_Jimena.Migrations
 {
     /// <inheritdoc />
-    public partial class CircleInitial : Migration
+    public partial class TriangleInitial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -16,7 +16,24 @@ namespace webApi_Jimena.Migrations
                 name: "JJF");
 
             migrationBuilder.CreateTable(
-                name: "CircleModel",
+                name: "BookModelCrud",
+                schema: "JJF",
+                columns: table => new
+                {
+                    id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    title = table.Column<string>(type: "text", nullable: false),
+                    author = table.Column<string>(type: "text", nullable: false),
+                    pageCount = table.Column<int>(type: "integer", nullable: false),
+                    Timestamp = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_BookModelCrud", x => x.id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "CircleCalculations",
                 schema: "JJF",
                 columns: table => new
                 {
@@ -30,11 +47,11 @@ namespace webApi_Jimena.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_CircleModel", x => x.id);
+                    table.PrimaryKey("PK_CircleCalculations", x => x.id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "TriangleModel",
+                name: "TriangleCalculations",
                 schema: "JJF",
                 columns: table => new
                 {
@@ -47,7 +64,7 @@ namespace webApi_Jimena.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_TriangleModel", x => x.id);
+                    table.PrimaryKey("PK_TriangleCalculations", x => x.id);
                 });
         }
 
@@ -55,11 +72,15 @@ namespace webApi_Jimena.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "CircleModel",
+                name: "BookModelCrud",
                 schema: "JJF");
 
             migrationBuilder.DropTable(
-                name: "TriangleModel",
+                name: "CircleCalculations",
+                schema: "JJF");
+
+            migrationBuilder.DropTable(
+                name: "TriangleCalculations",
                 schema: "JJF");
         }
     }

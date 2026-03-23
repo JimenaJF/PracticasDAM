@@ -1,6 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Modelo.ResponseEntity;
+using System.Collections;
+using System.Reflection.Metadata.Ecma335;
 using webApi_Jimena.Interface;
+using webApi_Jimena.Models;
 using webApi_Jimena.RequestEntity;
 using webApi_Jimena.Service;
 
@@ -57,7 +60,39 @@ namespace webApi_Jimena.Controller
 
             return Ok(new CircleResponse{ Perimeter = resultPerimeterCircle });
         }
+        
+        [HttpPost("/CreateCircle")]
+        public async Task<CircleModel> Create([FromBody] CircleModel circleModel)
+        {
+            return await _circleService.Create(circleModel);
+        }
+
+        [HttpGet("/GetAllCircle")]
+        public async Task<IEnumerable> GetAll()
+        {
+            return await _circleService.GetAll();
+        }
+
+        [HttpGet("GetByIdCircle/{id}")]
+        public async Task<CircleModel> GetById(int id) 
+        {
+            return await _circleService.GetById(id);
+        }
+
+        [HttpPut("UpdateCircle/{id}")]
+        public async Task<CircleModel> Update(int id, [FromBody] CircleModel circleModel)
+        {
+            return await _circleService.Update(id, circleModel);
+        }
+
+        [HttpDelete("/DeleteCircle/{id}")]
+        public async Task<bool> Delete(int id) { 
+            return await _circleService.Delete(id);
+        }
+
     }
+
+        
     
 }
 
