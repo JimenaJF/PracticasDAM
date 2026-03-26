@@ -1,0 +1,11 @@
+node_modules
+.vscode
+package.json
+package-lock.json
+tsconfig.json
+tsconfig.app.json
+tsconfig.node.json
+README.md
+dist
+.env*
+public/*

@@ -1,0 +1,21 @@
+{
+    "editor.tabSize": 2,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true,
+    "editor.fontFamily": "'Cascadia Code', 'Fira Code'",
+    "editor.fontLigatures": true,
+    "editor.codeActionsOnSave": {
+        "source.fixAll": "explicit",
+        "source.organizeImports": "explicit",
+        "source.sortMembers": "explicit"
+    },
+    "workbench.colorCustomizations": {
+        "titleBar.activeBackground": "#b561d6a9",
+        "titleBar.activeForeground": "#ffffff",
+        "titleBar.inactiveBackground": "#b561d6a9",
+        "titleBar.inactiveForeground": "#ffffff",
+        "statusBar.background": "#b561d6a9",
+        "statusBarItem.activeBackground": "#ffffff",
+        "statusBar.foreground": "#ffffff"
+    }
+}

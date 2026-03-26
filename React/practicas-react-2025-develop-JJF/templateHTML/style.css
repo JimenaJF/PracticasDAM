@@ -1,0 +1,1070 @@
+body {
+    font-family: sans-serif;
+    color: #555555;
+}
+
+/*HEADER STYLE*/
+
+header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 70px;
+}
+.logo {
+    max-width: fit-content;
+}
+.header_right{
+    width: 500px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+}
+.client {
+    position: relative;
+    height: 70px;
+}
+.ellipse {
+    position: relative;
+    z-index: 1;
+    margin-left: -50px;
+    margin-top: -30px;
+}
+.ellipse > p {
+    padding: 0;
+    color: white;
+    font-weight: bold;
+    position: absolute;
+    margin-top: -29px;
+    margin-left: 10px;
+}
+.client_name {
+    position: relative;
+    margin-left: -30px;
+}
+.config {
+    height: 40px;
+    width: 40px;
+}
+.on_off{
+    height: 35px;
+    width: 35px;
+    filter: opacity(0.4) drop-shadow(0 0 0 red);
+}
+.dots{
+    height: 20px;
+}
+.settings {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+.logout {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: red;
+    gap: 10px;
+}
+
+/*Header responsive: smartphone*/
+
+@media screen and (min-width: 320px) and (max-width: 640px) {
+    .logo {
+        width: 50%;
+        height: 50%;
+        align-self: center;
+    }
+    .header_right {
+        justify-content: flex-end;
+    }
+    .client, .config, .on_off {
+        height: 75%;
+    }
+    .ellipse {
+        margin-top: -30px;
+        margin-left: -20px;
+    }
+    .dots, .log_letters, .client_name, .sett_letters {
+        display: none;
+    }
+    hr{
+        width: 100%;
+    }
+}
+
+/*Header responsive: mobile*/
+
+@media screen and (min-width: 640px) and (max-width: 1024px){
+    .dots, .log_letters, .client_name, .sett_letters {
+        display: none;
+    }
+    .header_right {
+        width: 200px;
+    }
+    .ellipse {
+        max-height: 5%;
+        margin-top: -60px;
+    }
+    hr{
+        width: 100%;
+    }
+}
+
+/*Header responsive: tablet*/
+
+/* @media screen and (min-width: 1024px) and (max-width: 1280px) {
+} */
+
+/*MAIN STYLE*/
+
+main {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    width: 1500px;
+    height: auto;
+    margin-top: 20px;
+    margin-bottom: 50px;
+}
+.rectangle {
+    max-height: 100%;
+    max-width: 100%;
+    align-self: start;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.img_rectangle {
+    height: 242px;
+    width: auto;
+}
+.card {
+    height: 225px;
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    margin: 10px;
+}
+.card > div {
+    font-weight: bold;
+    font-size: xx-large;
+    height: fit-content;
+    width: 220px;
+    word-break: break-all;
+    align-self: flex-end;
+    text-align: right;
+}
+.layer {
+    height: 20px;
+    align-self: flex-start;
+}
+.layer_bottom {
+    height: 24px;
+    align-self: flex-end;
+}
+.img_item {
+    height: 200px;
+}
+.ellipse_card {
+    position: absolute;
+    right: 0px;
+}
+.circle_test {
+    background-color: rgb(240, 47, 47);
+    color: white;
+    max-width: fit-content;
+    height: auto;
+    padding: 10px 20px;
+    border-radius: 50%;
+    position: absolute;
+    margin-bottom: 170px;
+    margin-left: 400px;
+}
+.total_points {
+    display: flex;
+    justify-content: center;
+    color: white;
+    font-size: small;
+    background-color: rgb(240, 47, 47);
+    white-space: nowrap;
+    max-width: fit-content;
+    padding: 15px;
+    position: absolute;
+    margin-left: 220px;
+    margin-bottom: 160px;
+}
+
+/*Main responsive: smartphone*/
+
+@media screen and (min-width: 320px) and (max-width: 640px) {
+    .container {
+        width: auto;
+        flex-direction: column;
+        flex-wrap: nowrap;
+    }
+    .img_rectangle {
+        max-height: 120px;
+    }
+    .card {
+        max-height: 110px;
+    }
+    .card > div {
+        width: 100px;
+        font-size: 15px;
+        margin-bottom: 10px;
+    }
+    .img_item {
+        height: 80%;
+        align-self: center;
+    }
+    .circle_test {
+        margin-left: 190px;
+        margin-bottom: 75px !important;
+        padding: 10px 15px;
+    }
+    .total_points {
+        font-size: x-small !important;
+        background-color: rgb(240, 47, 47);
+        margin-left: 120px;
+        margin-bottom: 75px !important;
+    }
+}
+
+/*Main responsive: mobile*/
+
+@media screen and (min-width: 640px) and (max-width: 1024px) {
+    .container {
+        width: auto;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+    .rectangle {
+        width: 40%;
+    }
+    .img_rectangle {
+        max-height: 120px;
+        width: 140%;
+    }
+    .card {
+        width: 37%;
+        max-height: 110px;
+        flex-wrap: nowrap;
+    }
+    .card > div {
+        width: 140%;
+        font-size: 15px;
+        margin-bottom: 10px;
+        word-break: keep-all;
+    }
+    .img_item {
+        height: 80%;
+        align-self: center;
+    }
+    .circle_test {
+        margin-left: 190px;
+        margin-bottom: 75px !important;
+        padding: 10px 15px;
+    }
+    .total_points {
+        font-size: small !important;
+        background-color: rgb(240, 47, 47);
+        margin-left: 110px;
+        margin-bottom: 70px !important;
+    }
+}
+
+/*Main responsive: tablet*/
+
+@media screen and (min-width: 1024px) and (max-width: 1280px) {
+    .container {
+        width: auto;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+    .rectangle {
+        width: 30%;
+    }
+    .img_rectangle {
+        max-height: 150px;
+        max-width: 300px;
+    }
+    .card {
+        width: 290px;
+        max-height: 27%;
+        flex-wrap: nowrap;
+        margin: 5px;
+    }
+    .card > div {
+        width: 120%;
+        font-size: 20px;
+        word-break: keep-all;
+        margin-bottom: 10px;
+    }
+    .img_item {
+        height: 80%;
+        align-self: center;
+    }
+    .circle_test {
+        margin-left: 240px;
+        margin-bottom: 90px !important;
+        padding: 10px 15px;
+    }
+    .total_points {
+        font-size: small !important;
+        background-color: rgb(240, 47, 47);
+        margin-left: 160px;
+        margin-bottom: 80px !important;
+    }
+}
+
+/*SECTIONS STYLE: titles*/
+
+.title {
+    height: 50px;
+    background-color: lightgray;
+    color: grey;
+    font-size: xx-large;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    align-content: flex-start;
+    gap: 40px;
+    padding-left: 40px;
+}
+.img_title {
+    height: 50px
+}
+.bar {
+    margin-left: auto;
+}
+.bar_icons {
+    visibility: hidden;
+}
+
+/*ALERTS STYLE*/
+
+.alerts_messaging {
+    margin-top: 30px;
+    margin-bottom: 50px;
+    color: #555555;
+}
+.container_messages {
+    margin-left: 100px;
+    margin-right: 100px;
+}
+.header_messages, .mail_menu {
+    display: flex;
+    flex-direction: row;
+    border: 1px solid lightgrey;
+    align-items: center;
+    gap: 30px;
+    height: 45px;
+}
+.btn_check {
+    margin-left: 9px;
+    width: 0;
+}
+.ellipse_inbox {
+    position: absolute;
+    margin-top: -35px;
+    margin-left: 235px;
+    background-color: rgb(240, 47, 47);
+    color: white;
+    font-weight: bold;
+    border-radius: 50%;
+    padding: 10px 15px;
+}
+form {
+    display: flex;
+    padding: 2px;
+    border: 1px solid lightgrey;
+    margin-left: auto;
+    margin-right: 50px;
+}
+input[type="search"] {
+    margin-left: auto;
+    border: 1px solid transparent;
+}
+button[type="submit"] {
+    text-indent: -999px;
+    overflow: hidden;
+    width: 40px;
+    padding: 0;
+    margin: 0;
+    border: 1px solid transparent;
+    border-radius: inherit;
+    background: transparent url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' class='bi bi-search' viewBox='0 0 16 16'%3E%3Cpath d='M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z'%3E%3C/path%3E%3C/svg%3E") no-repeat center;
+    cursor: pointer;
+    opacity: 0.7;
+}
+button[type="submit"]:hover {
+    opacity: 1;
+}
+.table_mail,
+.tr_mail {
+    border: 1px solid lightgrey;
+    border-collapse: collapse;
+    height: 35px;
+}
+.td_check {
+    width: 2%;
+    text-align: center;
+}
+.td_sender {
+    font-weight: bold;
+    width: 20%;
+}
+.td_subject {
+    width: 40%;
+}
+.td_date {
+    width: 20%;
+}
+.td_arrow {
+    width: 2%;
+    text-align: center;
+}
+.ellipse_mail, .grey_ellipse {
+    height: 15px;
+    margin-right: 10px;
+}
+.arrow_opened {
+    height: 5px;
+}
+.arrow_closed {
+    height: 5px;
+    rotate: -90deg;
+}
+.opened_mail {
+    background-color: #F5F5F5;
+}
+.opened_mail > h1, p {
+    text-align: left;
+    font-weight: 100;
+    margin-left: 30px;
+    margin-right: 30px;
+}
+.opened_mail > input[type="button"] {
+    float: right;
+    margin-right: 30px;
+    margin-bottom: 20px;
+}
+.btn_reply {
+    background-color:rgb(1, 209, 216);
+    border: none;
+    color: rgb(67, 111, 112);
+    font-weight: bold;
+    padding: 15px 32px;
+    text-align: center;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+.btn_delete {
+    background-image: url(./images/Rectangle\ 2.png);
+    border: none;
+    color: white;
+    font-weight: bold;
+    padding: 15px 32px;
+    text-align: center;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+.new_msg{
+    background-image: url(./images/Rectangle\ 2.png);
+    color: white;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    padding: 0px 15px 0px 15px;
+}
+.sent_msg {
+    background-color: lightgrey;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    padding: 0px 15px 0px 15px;
+}
+.previous_msg {
+    background-color: lightgrey;
+    padding-left: 10px;
+}
+#span2 {
+    visibility: hidden;
+    border: 1px solid transparent;
+
+}
+
+/*Alerts responsive: smartphone*/
+
+@media screen and (min-width: 320px) and (max-width: 640px) {
+    .title {
+        font-size: medium;
+        padding-left: 10px;
+        gap: 20px;
+    }
+    .img_title {
+        height: 40px;
+    }
+    .header_messages {
+        width: 100%;
+        height: fit-content;
+        flex-wrap: wrap;
+    }
+    .mail_menu {
+        display: flex;
+        flex-direction: row;
+        border: 1px solid lightgrey;
+        align-items: center;
+        gap: 30px;
+        height: 45px;
+    }
+    .container_messages {
+        margin-left: 0;
+        margin-right: 0;
+        font-size: small;
+    }
+    .btn_check {
+        margin-left: 0;
+    }
+    .ellipse_inbox {
+        margin-left: 210px;
+        font-size: x-small;
+        padding: 10px 12px;
+    }
+    form {
+        margin-right: 10px;
+    }
+    .td_check {
+        text-align: start;
+        width: 10%;
+    }
+    .td_subject {
+        display: none;
+    }
+    .td_sender,
+    .td_date {
+        width: 40%;
+        white-space: nowrap;
+    }
+    .td_arrow {
+        width: 10%;
+        overflow: hidden;
+    }
+    .btn_delete,
+    .btn_reply {
+        font-size: smaller;
+        padding: 10px 16px;
+    }
+    #span3 {
+        display: none;
+    }
+    #span2 {
+        visibility: visible;
+        border: 1px solid lightgrey;
+    }
+}
+
+/*Alerts responsive: mobile*/
+
+@media screen and (min-width: 640px) and (max-width: 1024px) {
+    .container_messages {
+        margin-left: 0;
+        margin-right: 0;
+    }
+    .btn_check {
+        margin-left: 0;
+    }
+    form {
+        margin-right: 10px;
+    }
+    .td_check {
+        text-align: start;
+        width: 10%;
+    }
+    .td_sender,
+    .td_subject,
+    .td_date {
+        width: 30%;
+        white-space: nowrap;
+    }
+    .td_arrow {
+        width: 10%;
+        overflow: hidden;
+        padding-right: 10px;
+    }
+    .previous_msg {
+        padding: 0;
+        width: 1%;
+        white-space: nowrap;
+        text-align: center;
+        justify-content: center;
+    }
+    .ellipse_inbox {
+        margin-left: 225px;
+        font-size: small;
+    }
+}
+
+/*Alerts responsive: tablet*/
+
+/* @media screen and (min-width: 1024px) and (max-width: 1280px) {
+} */
+
+/*REMINDERS STYLE*/
+
+.container_calendar {
+    border: 1px solid lightgrey;
+    margin: 20px 100px;
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    gap: 30px;
+    padding: 20px 40px;
+    background-color: #F5F5F5;
+}
+.reminders {
+    width: 40%;
+}
+.date {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    text-align: center;
+    justify-content: center;
+    align-content: center;
+}
+.date > h1 {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+.date > p {
+    margin-top: 0;
+}
+.doctor {
+    background-image: url(./images/Rectangle\ 2.png);
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    color: white;
+    align-items: center;
+    margin-bottom: 10px;
+    justify-items: flex-start;
+}
+.img_phone,
+.img_calendar {
+    height: 30px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+.header_test {
+    background-image: url(./images/Rectangle\ 2.png);
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    color: white;
+    align-items: center;
+}
+.cross {
+    align-self: flex-start;
+    margin-left: auto;
+}
+.cross > img {
+    height: 30px;
+}
+.body_test {
+    background-color: lightgrey;
+    padding-top: 10px;
+    display: flex;
+    flex-direction: column;
+    align-content: flex-start;
+    padding-bottom: 10px;
+}
+.test_date {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.dr_name > p,
+.test_type > p {
+    margin: 0;
+    margin-bottom: 10px;
+}
+.test_date > p {
+    margin: 0;
+}
+.dr_name > h1,
+.test_type > h1 {
+    margin-bottom: 0;
+    margin-top: 10px;
+}
+.test_date,
+.test_summary {
+    margin-left: 15px;
+}
+.test_summary {
+    margin-bottom: 20px;
+}
+.buttons {
+    align-self: center;
+    display: flex;
+    gap: 20px;
+}
+.nav_calendar {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 34px;
+}
+#arrow_left {
+    rotate: 90deg;
+}
+.arrow_left {
+    margin-right: auto;
+}
+.arrow_right {
+    margin-left: auto;
+}
+.calendar {
+    width: 50%;
+}
+.table_calendar {
+    width: 100%;
+    height: 87%;
+    background-color: white;
+    text-align: center;
+    border-collapse: collapse;
+    font-size: larger;
+}
+.table_calendar > tr {
+    height: 0;
+}
+.table_calendar > thead {
+    background-color: rgb(1, 209, 216);
+    height: 10%;
+}
+.date_current,
+.date_day {
+    background-image: url(./images/Ellipse\ 1.png);
+    background-repeat: no-repeat;
+    background-size: 40%;
+    background-position-x: center;
+    background-position-y: center;
+    color: white;
+    font-weight: 900;
+}
+.date_day {
+    opacity: 0.7;
+    font-weight: 100;
+}
+
+/*Reminders responsive: smartphone*/
+
+@media screen and (min-width: 320px) and (max-width: 640px) {
+    .title {
+        font-size: small;
+        padding-left: 10px;
+        gap: 20px;
+    }
+    .img_title {
+        height: 40px;
+    }
+    .bar {
+        display: none;
+    }
+    .bar_icons {
+        visibility: visible;
+        margin-left: auto;
+    }
+    .square,
+    .list {
+        height: 20px;
+    }
+    .reminders_calendar {
+        display: flex;
+        justify-content: center;
+    }
+    .container_calendar {
+        flex-direction: column;
+        margin-left: 0;
+        margin-right: 0;
+    }
+    .reminders,
+    .calendar {
+        width: 100%;
+        font-size: x-small;
+    }
+    .nav_calendar {
+        margin-bottom: 10px;
+    }
+    .table_calendar > thead {
+        height: 30px;
+    }
+    .table_calendar > tbody {
+        height: 150px;
+    }
+}
+
+/*Reminders responsive: mobile*/
+
+@media screen and (min-width: 640px) and (max-width: 1024px) {
+    .title {
+        font-size: medium;
+        padding-left: 10px;
+        gap: 20px;
+    }
+    .img_title {
+        height: 40px;
+    }
+    .bar {
+        height: 15px;
+    }
+    .reminders_calendar {
+        display: flex;
+        justify-content: center;
+    }
+    .container_calendar {
+        flex-direction: column;
+        margin-left: 0;
+        margin-right: 0;
+    }
+    .reminders,
+    .calendar {
+        width: 100%;
+    }
+    .nav_calendar {
+        margin-bottom: 10px;
+    }
+    .table_calendar > thead {
+        height: 30px;
+    }
+    .table_calendar > tbody {
+        height: 300px;
+    }
+    .date_current,
+    .date_day {
+        background-size: 50%;
+    }
+}
+
+/*Reminders responsive: tablet*/
+
+/* @media screen and (min-width: 1024px) and (max-width: 1280px) {
+} */
+
+/*CIRCLE STYLE*/
+
+.circle {
+    display: flex;
+    justify-content: center;
+}
+.circle_container {
+    border: 1px solid lightgrey;
+    margin: 20px 100px;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    padding: 0px 0px;
+    background-color: #F5F5F5;
+}
+.circle_nav {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    background-color: white;
+}
+.nav_care {
+    border: 1px solid lightgrey;
+    width: 100%;
+    text-align: center;
+    padding: 20px 0 20px;
+    position: relative;
+}
+.bottom_bar{
+    position: absolute;
+    height: 5px;
+    background-color: red;
+    width: 100%;
+    padding: 0;
+    margin-top: 15px;
+}
+#pending {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+}
+.ellipse_pending {
+    background-color: rgb(240, 47, 47);
+    color: white;
+    font-weight: bold;
+    width: fit-content;
+    padding: 10px 15px;
+    border-radius: 50%;
+    height: 30%;
+    margin-left: 10px;
+}
+.circle_body {
+    display: flex;
+    flex-direction: column;
+}
+.grey_title {
+    border: 1px solid lightgrey;
+    background-color: lightgrey;
+    width: max-content;
+    height: max-content;
+    padding: 10px;
+    margin: 15px auto;
+}
+.cards_container {
+    margin: 15px auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 30px 50px;
+    justify-content: center;
+    margin-left: 100px;
+    margin-right: 100px;
+    margin-bottom: 50px;
+}
+.care_square {
+    background-color: white;
+    border: 1px solid lightgrey;
+    width: 30%;
+    display: flex;
+    flex-direction: row;
+    position: relative;
+}
+.care_card {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    justify-content: flex-end;
+}
+.red_bar {
+    height: 100%;
+    width: 10px;
+    background-color: red;
+}
+.blue_bar {
+    height: 100%;
+    width: 10px;
+    background-color: rgb(1, 209, 216);
+}
+.prova {
+    display: flex;
+    height: 150%;
+}
+.picture {
+    width: 20%;
+    height: fit-content;
+    padding: 0px 0px 15px 35px;
+    align-self: flex-end;
+    position: absolute;
+}
+.picture > img {
+    width: 100%;
+}
+.name_profession {
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+    white-space: nowrap;
+}
+.name_profession > p {
+    margin: 0;
+    width: fit-content;
+    align-self: flex-end;
+    margin-right: 10px;
+}
+.name_profession > h1 {
+    margin-right: 10px;
+}
+.send_msg {
+    display: flex;
+    background-image: url(./images/Rectangle\ 2.png);
+    color: white;
+    width: fit-content;
+    height: 15%;
+    display: table-cell;
+    vertical-align: middle;
+    padding: 20px;
+    align-self: flex-end;
+    flex-wrap: nowrap;
+    white-space: nowrap;
+    margin-top: 20px;
+}
+
+/*Circle responsive: smartphone*/
+
+@media screen and (min-width: 320px) and (max-width: 640px) {
+    .circle_container {
+        margin-left: 0;
+        margin-right: 0;
+        width: 100%;
+    }
+    .grey_title {
+        font-size: small;
+        width: inherit;
+    }
+    .circle_nav {
+        font-size: small;
+    }
+    .cards_container {
+        margin-left: 0;
+        margin-right: 0;
+    }
+    .care_square {
+        width: 100%;
+        font-size: small;
+    }
+    #pending {
+        gap: 10px;
+    }
+    .ellipse_pending {
+        margin-left: 0;
+        padding: 5px 10px;
+    }
+}
+
+/*Circle Responsive: mobile*/
+
+@media screen and (min-width: 640px) and (max-width: 1024px) {
+    .care_square {
+        width: 100%;
+    }
+}
+
+/*Circle Responsive: tablet*/
+
+@media screen and (min-width: 1024px) and (max-width: 1280px) {
+    .care_square {
+        width: 50%;
+    }
+}
