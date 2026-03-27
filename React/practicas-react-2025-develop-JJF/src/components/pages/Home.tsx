@@ -1,6 +1,7 @@
 import { useTranslation } from 'react-i18next';
-import CardItem from '../molecules/CardItem';
-import UserSummary from '../molecules/UserSummary';
+import AlertsMessaging from '../organisms/AlertsMessaging';
+import CardsGrid from '../organisms/CardsGrid';
+import Header from '../organisms/Header';
 //import 'styles/Home.css';
 
 export default function Home() {
@@ -8,8 +9,17 @@ export default function Home() {
 
   return (
     <>
-      <UserSummary/>
-      <CardItem/>
+      <Header
+        valueNotification={6}
+        clientName="Cordelia Carpenter"
+        textValueSettings="SETTINGS"
+        textLogoutButton="LOGOUT"
+      />
+
+      <CardsGrid />
+      <section>
+        <AlertsMessaging text="ALERTS AND MESSAGING" />
+      </section>
     </>
   );
 }

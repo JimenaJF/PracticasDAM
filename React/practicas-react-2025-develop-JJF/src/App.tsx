@@ -1,16 +1,12 @@
-//import './App.css';
-import CardsGrid from './components/organisms/CardsGrid';
-import Header from './components/organisms/Header';
+import { RouterProvider } from "react-router";
+import { router } from "./router";
+
 import './styles.css';
 
 function App() {
-  return (
-    <> 
-          <Header/>
-          <CardsGrid/>
-
-    </>
-  );
+    
+  return <RouterProvider router={router} />;
+    
 }
 
 export default App;

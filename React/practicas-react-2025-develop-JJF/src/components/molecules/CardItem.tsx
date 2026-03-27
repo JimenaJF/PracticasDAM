@@ -1,28 +1,31 @@
-import { IMAGES } from "@/assets/dictionaryImg";
+import Badge from "../atoms/Badge";
+import CardTitle from "../atoms/CardTitle";
+import Icon from "../atoms/Icon";
 
-export  default function CardItem() {
+export default function CardItem({ totalPoints, rectangle, layerTop, icon, badge, titleText, layerBottom }: 
+  { totalPoints?: string; rectangle: string; layerTop: string; icon: string; badge?: number; titleText: React.ReactNode; layerBottom: string; }) {
   return (
-    <div className="container">
+    <div className="rectangle">
 
-      <div className="rectangle">
-        <img src={IMAGES.rectangle_1} className="img_rectangle" />
-      </div>
-     
+      <Icon name= {rectangle} className="img_rectangle" />
+
       <div className="card">
 
-        <img src = {IMAGES.layer_2} className="layer" />
-        <img src = {IMAGES.warnings_off2} className="img_item" />
-        <div className="circle_test"> 
-          1
-        </div>
-        <div>REMINDERS CALENDAR</div>
-        <img src = {IMAGES.layer_3} className="layer_bottom"/>
+        <Icon name={layerTop} className="layer" />
+        <Icon name={icon} className="img_item" />
+
+        {badge && <Badge value={badge} className="circle_test" />}
+
+        <CardTitle>{titleText}</CardTitle>
+
+        <Icon name={layerBottom} className="layer_bottom" />
+       
+        {totalPoints && (
+          <div className="total_points">{totalPoints}</div>
+        )}
 
       </div>
-    
-
     </div>
-
-
   );
 }
+
