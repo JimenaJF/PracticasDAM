@@ -488,8 +488,8 @@ button[type="submit"]:hover {
     cursor: pointer;
 }
 .new_msg{
-    background-image: url(./images/Rectangle\ 2.png);
-    color: white;
+    background-image: url("./images/Rectangle 2.png");
+    color: rgb(218, 23, 23);
     height: 45px;
     display: flex;
     align-items: center;
