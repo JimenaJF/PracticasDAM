@@ -4,27 +4,39 @@ import Text from '../atoms/Text';
 
 export default function MailMenu({
   labels, 
-  inboxCount 
+  inboxCount,
+  onNewMessage,
+  onInbox,
+  onSent
 }: { 
   labels: { newMsg: string; inbox: string; sent: string };
   inboxCount: number;
+  onNewMessage: () => void;
+  onInbox: () => void;
+  onSent: () => void;
 }) {
   return (
     <div className="mail_menu">
       
       <div className="btn_check">
-        <Checkbox />
+        <Checkbox id='check_all'/>
       </div>
 
-      <Text className="new_msg">{labels.newMsg}</Text>
+      <Text className="new_msg" onClick={onNewMessage}>
+        {labels.newMsg}
+      </Text>
 
-      <Text className="inbox">{labels.inbox}</Text>
+      <Text className="inbox" onClick={onInbox}>
+        {labels.inbox}
+      </Text>
 
       <div className="ellipse_inbox">
         <Badge value={inboxCount} />
       </div>
 
-      <Text className="sent_msg">{labels.sent}</Text>
+      <Text className="sent_msg" onClick={onSent}>
+        {labels.sent}
+      </Text>
     </div>
   );
 }

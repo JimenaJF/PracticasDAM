@@ -14,7 +14,10 @@ export default function Header({valueNotification, clientName, textValueSettings
   <>
   
     <header>
-      <Icon name="logo_easy_connect_SBS" className="logo" />
+      <Icon name="logo_easy_connect_SBS" className="logo" 
+      
+        onClick={() => (window.location.href = "/")}
+        />
 
       <div className="header_right">
 

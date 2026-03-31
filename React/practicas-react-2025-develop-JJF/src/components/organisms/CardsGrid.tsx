@@ -1,24 +1,23 @@
+import { useNavigate } from 'react-router-dom';
 import CardItem from "../molecules/CardItem";
 
+export default function CardsGrid({ cards }: { cards: any[] }) {
+  const navigate = useNavigate();
 
-
-export default function CardsGrid({cards}:{cards: any[]}) {
-
-  
- return (
+  return (
     <>
-    <main>    
-      <div className="container">
-
-        {cards.map((card, index) => (
-          <CardItem key={index} {...card} />
-        ))}
-
-      </div>
-    </main>      
+      <main>
+        <div className="container">
+          {cards.map((card, index) => (
+            <CardItem
+              key={index}
+              {...card}
+              onClick={() => navigate(card.route)}
+            />
+          ))}
+        </div>
+      </main>
       <hr />
     </>
   );
-
 }
-

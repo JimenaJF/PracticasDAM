@@ -1,11 +1,8 @@
-import { useTranslation } from 'react-i18next';
-import AlertsMessaging from '../organisms/AlertsMessaging';
 import CardsGrid from '../organisms/CardsGrid';
-import Header from '../organisms/Header';
-import { MessageHeader } from '../organisms/MessageHeader';
+import { CircleOfCareOrganisms } from '../organisms/CircleOfCareOrgannisms';
 import { RemindersCalendar } from '../organisms/RemindersCalendar';
-import TableGrid from '../organisms/TableGrid';
 //import 'styles/Home.css';
+
 
 const cards= [
 
@@ -14,14 +11,16 @@ const cards= [
     layerTop: "layer_2", 
     icon: "warnings_off2", 
     titleText: "ALERTS AND MESSAGING", 
-    layerBottom: "layer_3"},
-
+    layerBottom: "layer_3",
+    route: "/alerts-messaging"
+  },
   { rectangle: "rectangle_1",
     layerTop: "layer_2",
     icon: "reminders_calendar",
     titleText: "REMINDERS CALENDAR",
     badge:1,
-    layerBottom: "layer_3"
+    layerBottom: "layer_3",
+    route: "/reminders-calendar"
   },
   { rectangle: "rectangle_1",
     layerTop: "layer_2",
@@ -33,7 +32,8 @@ const cards= [
     ),
 
     badge: 2,
-    layerBottom: "layer_3"
+    layerBottom: "layer_3",
+    route: "/circle-of-care"
   },
   {
     rectangle: "rectangle_1",
@@ -41,21 +41,24 @@ const cards= [
     icon: "daily_care_o_gram",
     titleText: "DAILY CARE-O-GRAM",
     badge: 1,
-    layerBottom: "layer_3"
+    layerBottom: "layer_3",
+    route: "/daily-care-o-gram"
   },
   {
     rectangle: "rectangle_1",
     layerTop: "layer_2",
     icon: "casemanager",
     titleText: "REPOSITORY",
-    layerBottom: "layer_3"
+    layerBottom: "layer_3",
+    route: "/repository"
   },
   {
     rectangle: "rectangle_1",
     layerTop: "layer_2",
     icon: "my_health_reports",
     titleText: "REPORTS",
-    layerBottom: "layer_3"
+    layerBottom: "layer_3",
+    route: "/reports"
   },
   {
     rectangle: "rectangle_1",
@@ -63,7 +66,8 @@ const cards= [
     icon: "reward_points",
     titleText: "MY POINTS",
     layerBottom: "layer_3",
-    totalPoints: "Total Points 725"
+    totalPoints: "Total Points 725",
+    route: "/my-points"
   }
 
  
@@ -128,40 +132,101 @@ const tableItems = [
   }
 ];
 
+const reminderData = {
+  today: {
+    title: "TODAY",
+    date: "2 JULY / MONDAY",
+  },
+  doctor: {
+    name: "Call Dr. Smith",
+    phone: "675 557 89",
+  },
+  test: {
+    title: "Ocular Test",
+    location: "Memorial Clinic Miami",
+    date: "2 JULY 2012",
+    time: "14:30",
+    summary: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tristique orci sed ipsum maximus sollicitudin. Phasellus sed porta neque. Morbi at convallis risus. Aliquam et lorem venenatis, sodales eros sit amet, lobortis risus. Proin ac condimentum ipsum. Vestibulum vestibulum fermentum venenatis. Quisque sodales velit erat, eu scelerisque nisi feugiat ac. Nulla congue tellus vel nunc euismod interdum.",
+  },
+  calendar: {
+    currentDay: 2,
+    markedDays: [6,16 , 27],
+    month: "JULY 2014",
+    headers: ["S", "M", "T", "W", "T", "F", "S"],
+    weeks: [
+      [1, 2, 3, 4, 5, 6, 7],
+      [8, 9, 10, 11, 12, 13, 14],
+      [15, 16, 17, 18, 19, 20, 21],
+      [22, 23, 24, 25, 26, 27, 28],
+      [29, 30, 31, "", "", "", ""],
+    ],
+  },
+};
+
+const circleCards = [
+  {
+    name: "Francis Fisher Williams",
+    role: "Graphic Designer",
+    image: "francis",
+    color: "red",
+    sendMessage: "Send Message"
+  },
+  {
+    name: "Marie Kraft Smith",
+    role: "Doctor",
+    image: "marie",
+    color: "blue",
+    sendMessage: "Send Message"
+  },
+  {
+    name: "Dolores Vidal Taylor",
+    role: "Comercial",
+    image: "dolores",
+    color: "red",
+    sendMessage: "Send Message"
+  },
+  {
+    name: "Robbie Walker Jr.",
+    role: "CEO NY Memorial",
+    image: "robbie",
+    color: "red",
+    sendMessage: "Send Message"
+  },
+  {
+    name: "Vanessa Herrera Simons",
+    role: "Nurse",
+    image: "vanessa",
+    color: "blue",
+    sendMessage: "Send Message"
+  },
+];
+
+
 
 export default function Home() {
-  const { t } = useTranslation();
 
   return (
     <>
-      <Header
-        valueNotification={6}
-        clientName="Cordelia Carpenter"
-        textValueSettings="SETTINGS"
-        textLogoutButton="LOGOUT"
-      />
+      <CardsGrid cards={cards} />
 
-      <CardsGrid cards = {cards} />
       <section>
-        <AlertsMessaging text="ALERTS AND MESSAGING" />
-        
-        <div className="alerts_messaging">
-          <div className="container_messages">
-          
-            <MessageHeader title="Search" />
-
-            <table className="table_mail">
-            <TableGrid items = {tableItems}/>
-            </table>
-
-       
-          </div>
-        </div>
-        
+        <RemindersCalendar
+          text="REMINDERS CALENDAR"
+          data={reminderData}
+        />
       </section>
+
       <section>
-      
-        <RemindersCalendar text="REMINDERS CALENDAR" />
+        <CircleOfCareOrganisms 
+          nameCircleOfCare='CIRCLE OF CARE'
+          imgCircle='ties2'
+          pending={1} 
+          cards={circleCards} 
+          textCircleBody="For organize Drag & Drop in the groups"
+          textNav1="FIND"
+          textNav2="MY CIRCLE OF CARE"
+          textNav3="PENDING" 
+        />
       </section>
     </>
   );

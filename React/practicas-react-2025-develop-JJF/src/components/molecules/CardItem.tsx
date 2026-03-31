@@ -2,10 +2,10 @@ import Badge from "../atoms/Badge";
 import CardTitle from "../atoms/CardTitle";
 import Icon from "../atoms/Icon";
 
-export default function CardItem({ totalPoints, rectangle, layerTop, icon, badge, titleText, layerBottom }: 
-  { totalPoints?: string; rectangle: string; layerTop: string; icon: string; badge?: number; titleText: React.ReactNode; layerBottom: string; }) {
+export default function CardItem({ totalPoints, rectangle, layerTop, icon, badge, titleText, layerBottom, onClick }: 
+  { totalPoints?: string; rectangle: string; layerTop: string; icon: string; badge?: number; titleText: React.ReactNode; layerBottom: string; onClick?: () => void }) {
   return (
-    <div className="rectangle">
+    <div className="rectangle" onClick={onClick} style={{ cursor: onClick ? "pointer" : "default" }}>
 
       <Icon name= {rectangle} className="img_rectangle" />
 
