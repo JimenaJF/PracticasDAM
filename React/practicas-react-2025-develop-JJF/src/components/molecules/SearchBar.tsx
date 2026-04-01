@@ -1,8 +1,15 @@
-export default function SearchBar({search}: {search: string}) {
+
+export default function SearchBar({ value,onChange
+}: { value: string; onChange: (value: string) => void;
+}) {
   return (
-    <form>
-      <input type="search" name="search" id="search" placeholder={search} />
-      <button type="submit">{search}</button>
-    </form>
+    <input
+      type="search"
+      name="search"
+      id="search"
+      placeholder="Search"
+      value={value}
+      onChange={(e) => onChange(e.target.value)}
+    />
   );
 }

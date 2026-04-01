@@ -4,13 +4,18 @@ import Text from "../atoms/Text";
 
 export default function NewMessageForm({
   onSend,
-  onCancel
+  onCancel,
+  initialEmail = "",
+  initialSubject = ""
+
 }: {
   onSend: (msg: any) => void;
   onCancel: () => void;
+  initialEmail?: string;
+  initialSubject?: string;
 }) {
-  const [email, setEmail] = useState("");
-  const [subject, setSubject] = useState("");
+  const [email, setEmail] = useState(initialEmail);
+  const [subject, setSubject] = useState(initialSubject);
   const [content, setContent] = useState("");
 
   return (
@@ -20,14 +25,14 @@ export default function NewMessageForm({
         <Text>Email</Text>
         <input
           type="email"
-          placeholder="example@outlook.com"
+          placeholder="example@gmail.com"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
       </div>
 
       <div className="new_msg_row">
-        <Text>Subject</Text>
+        <Text>Subject </Text>
         <input
           type="text"
           placeholder="Subject"
@@ -37,7 +42,7 @@ export default function NewMessageForm({
       </div>
 
       <div className="new_msg_row">
-        <Text>Content</Text>
+        <Text>Content </Text>
         <textarea
           value={content}
           onChange={(e) => setContent(e.target.value)}
@@ -45,7 +50,7 @@ export default function NewMessageForm({
         />
       </div>
 
-      <div className="buttons" style={{ display: "flex", gap: "20px" }}>
+      <div className="buttons">
         <ButtonMail
           value="Send"
           className="btn_reply"
