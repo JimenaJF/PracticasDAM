@@ -1,0 +1,10 @@
+let
+    Origen = Excel.Workbook(File.Contents(Ruta & "Clientes.xlsx"), null, true),
+    Clientes_Table = Origen{[Item="Clientes",Kind="Table"]}[Data],
+    #"Tipo cambiado" = Table.TransformColumnTypes(Clientes_Table,{{"IdCliente", Int64.Type}, {"CodGeografia", Int64.Type}, {"Nombre", type text}, {"Nombres2", type text}, {"Apellido", type text}, {"Nacimiento", type date}, {"EstadoCivil", type text}, {"Género", type text}, {"Ingresos", Int64.Type}, {"Hijos", Int64.Type}, {"Educación", type text}, {"Ocupación", type text}}),
+    #"Otras columnas quitadas" = Table.SelectColumns(#"Tipo cambiado",{"IdCliente", "Nacimiento", "EstadoCivil", "Género", "Ingresos", "Hijos"}),
+    Año_Nacimiento = Table.TransformColumns(#"Otras columnas quitadas",{{"Nacimiento", Date.Year, Int64.Type}}),
+    #"Columna condicional agregada" = Table.AddColumn(Año_Nacimiento, "Nivel Ingresos", each if [Ingresos] <= 50000 then "Bajo" else if [Ingresos] <= 100000 then "Medio" else "Alto"),
+    #"Tipo cambiado1" = Table.TransformColumnTypes(#"Columna condicional agregada",{{"Nivel Ingresos", type text}})
+in
+    #"Tipo cambiado1"

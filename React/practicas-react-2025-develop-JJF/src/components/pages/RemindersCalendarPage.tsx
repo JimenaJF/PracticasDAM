@@ -1,3 +1,4 @@
+import { randomUUID } from "crypto";
 import { useState } from "react";
 import { RemindersCalendar } from "../organisms/RemindersCalendar";
 
@@ -9,7 +10,7 @@ export default function RemindersCalendarPage() {
   const todayMonth = today.getMonth();
   const todayYear = today.getFullYear();
 
-  const [currentMonth, setCurrentMonth] = useState(today.getMonth()); // 0–11
+  const [currentMonth, setCurrentMonth] = useState(today.getMonth()); 
   const [currentYear, setCurrentYear] = useState(today.getFullYear());
   
 
@@ -104,7 +105,7 @@ export default function RemindersCalendarPage() {
   const addEventForSelectedDay = () => {
     if (!selectedDay) return;
 
-    const newId = crypto.randomUUID();
+    const newId = randomUUID();
     const now = new Date();
     const time = now.toTimeString().slice(0, 5);
 
