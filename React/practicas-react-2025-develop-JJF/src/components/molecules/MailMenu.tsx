@@ -7,13 +7,15 @@ export default function MailMenu({
   inboxCount,
   onNewMessage,
   onInbox,
-  onSent
+  onSent,
+  view
 }: { 
   labels: { newMsg: string; inbox: string; sent: string };
   inboxCount: number;
   onNewMessage: () => void;
   onInbox: () => void;
   onSent: () => void;
+  view: "inbox" | "sent" | "new";
 }) {
   return (
     <div className="mail_menu">
@@ -22,21 +24,33 @@ export default function MailMenu({
         <Checkbox id='check_all'/>
       </div>
 
-      <Text className="new_msg" onClick={onNewMessage}>
+      <Text
+        className={`sent_msg ${view === "new" ? "new_msg" : ""}`}
+        onClick={onNewMessage}
+      >
         {labels.newMsg}
       </Text>
 
-      <Text className="inbox" onClick={onInbox}>
+     
+      <Text
+        className={`sent_msg ${view === "inbox" ? "new_msg" : ""}`}
+        onClick={onInbox}
+      >
         {labels.inbox}
       </Text>
 
-      <div className="ellipse_inbox">
-        <Badge value={inboxCount} />
-      </div>
+  
+      <Badge value={inboxCount} className='ellipse_inbox'/>
 
-      <Text className="sent_msg" onClick={onSent}>
+
+
+      <Text
+        className={`sent_msg ${view === "sent" ? "new_msg" : ""}`}
+        onClick={onSent}
+      >
         {labels.sent}
       </Text>
+
     </div>
   );
 }

@@ -27,7 +27,7 @@ export default function AlertsMessaging({
   inboxItems: any[];
   sentItems: any[];
   openedIndex: number | null;
-  onOpenMessage: (index: number) => void;
+  onOpenMessage: (index: number | null) => void;
   onReplyMessage: (msg: any) => void;
   onDeleteMessage: (index: number) => void;
   onSend: (msg: any) => void;
@@ -42,15 +42,35 @@ export default function AlertsMessaging({
   searchValue: string;
 }) {
 
+  const [readIndexes, setReadIndexes] = React.useState<Set<number>>(new Set());
+
+  const handleOpenMessage = (index: number) => {
+    setReadIndexes(prev => new Set(prev).add(index));
+    onOpenMessage(openedIndex === index ? null : index);
+  };
+
+  const [visibleCount, setVisibleCount] = React.useState(5); 
+
+  const INITIAL_COUNT = 0; 
+
+  const handleLoadMore = () => {
+    setVisibleCount(prev => prev + 5); 
+  };
+
+  const handleCollapse = () => {
+    setVisibleCount(INITIAL_COUNT);
+  };
+  const visibleItems = inboxItems.slice(0, visibleCount); 
+  const hiddenCount = inboxItems.length - visibleCount; 
+  const isExpanded = visibleCount > INITIAL_COUNT; // Sabe si está expandido
+
+
   return (
     <>
       <AlertsMessagingMolecules text={text} />
 
       <div className="alerts_messaging">
         <div className="container_messages">
-
-          
-        
 
           <MessageHeader
             onSearch={onSearch}
@@ -59,19 +79,26 @@ export default function AlertsMessaging({
             onSent={onSent}
             inboxCount={inboxItems.length}
             searchValue={searchValue}
-                    
+            view={view}  
+
             />
 
           {view === "inbox" && (
+            <>
+            {inboxItems.length === 0 ? (
+            <div className="empty_inbox">
+              <p>No messages in your inbox</p>
+            </div>
+          ) : (
             <table className="table_mail">
               <tbody>
-                {inboxItems.map((item, index) => (
-                  <React.Fragment key={index}>
+                {visibleItems.map((item, index) => ( 
+                    <React.Fragment key={index}>
                     <tr
                       className="tr_mail"
-                      onClick={() => onOpenMessage(index)}
+                      onClick={() => handleOpenMessage(index)}
                     >
-                      <TableItem {...item} />
+                      <TableItem {...item} isRead={readIndexes.has(index)} /> 
                     </tr>
 
                     {openedIndex === index && item.body && (
@@ -84,10 +111,37 @@ export default function AlertsMessaging({
                         />
                       </tr>
                     )}
+                    
                   </React.Fragment>
                 ))}
+                
               </tbody>
+              
+              <tfoot>
+                
+                
+                <tr style={{ cursor: "pointer", height: "35px" }}>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  {hiddenCount > 0 ? (
+                    
+                    <td className="previous_msg" onClick={handleLoadMore}>
+                      {hiddenCount} Previously Messages 
+                    </td>
+                  ) : isExpanded ? (
+                    <td className="previous_msg" onClick={handleCollapse}>
+                      Show less 
+                    </td>
+                  ) : null}
+                  
+                </tr>
+                
+              </tfoot>
+              
             </table>
+          )}
+            </>
           )}
 
           {view === "sent" && (
@@ -98,10 +152,10 @@ export default function AlertsMessaging({
                         <React.Fragment key={index}>
                           <tr
                             className="tr_mail"
-                            onClick={() => onOpenMessage(index)}
+                            onClick={() => handleOpenMessage(index)}
                             style={{ cursor: "pointer" }}
                           >
-                            <TableItem {...item} />
+                            <TableItem {...item} isRead={readIndexes.has(index)} />
                           </tr>
 
                           {openedIndex === index && item.body && (
@@ -116,7 +170,7 @@ export default function AlertsMessaging({
                         )}
                         </React.Fragment>
                       ))}
-
+                      
               </tbody>
             </table>
           )}

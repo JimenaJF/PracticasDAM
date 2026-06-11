@@ -1,0 +1,256 @@
+{
+  "FileFormatVersion": 1,
+  "PhysicalQueryPlanRows": [
+    {
+      "Records": null,
+      "Operation": "PartitionIntoGroups: IterPhyOp LogOp=Order IterCols(0, 1)('Clientes'[Ocupación], ''[Cantidad]) #Groups=1 #Rows=5",
+      "IndentedOperation": "PartitionIntoGroups: IterPhyOp LogOp=Order IterCols(0, 1)('Clientes'[Ocupación], ''[Cantidad]) #Groups=1 #Rows=5",
+      "Level": 0,
+      "RowNumber": 1
+    },
+    {
+      "Records": 1,
+      "Operation": "AggregationSpool<Order>: SpoolPhyOp #Records=1",
+      "IndentedOperation": "    AggregationSpool<Order>: SpoolPhyOp #Records=1",
+      "Level": 1,
+      "RowNumber": 2
+    },
+    {
+      "Records": null,
+      "Operation": "GroupSemijoin: IterPhyOp LogOp=GroupSemiJoin IterCols(0, 1)('Clientes'[Ocupación], ''[Cantidad])",
+      "IndentedOperation": "        GroupSemijoin: IterPhyOp LogOp=GroupSemiJoin IterCols(0, 1)('Clientes'[Ocupación], ''[Cantidad])",
+      "Level": 2,
+      "RowNumber": 3
+    },
+    {
+      "Records": 5,
+      "Operation": "Spool_Iterator<SpoolIterator>: IterPhyOp LogOp=Sum_Vertipaq IterCols(1)('Clientes'[Ocupación]) #Records=5 #KeyCols=46 #ValueCols=1",
+      "IndentedOperation": "            Spool_Iterator<SpoolIterator>: IterPhyOp LogOp=Sum_Vertipaq IterCols(1)('Clientes'[Ocupación]) #Records=5 #KeyCols=46 #ValueCols=1",
+      "Level": 3,
+      "RowNumber": 4
+    },
+    {
+      "Records": 5,
+      "Operation": "ProjectionSpool<ProjectFusion<Copy>>: SpoolPhyOp #Records=5",
+      "IndentedOperation": "                ProjectionSpool<ProjectFusion<Copy>>: SpoolPhyOp #Records=5",
+      "Level": 4,
+      "RowNumber": 5
+    },
+    {
+      "Records": null,
+      "Operation": "Cache: IterPhyOp #FieldCols=1 #ValueCols=1",
+      "IndentedOperation": "                    Cache: IterPhyOp #FieldCols=1 #ValueCols=1",
+      "Level": 5,
+      "RowNumber": 6
+    },
+    {
+      "Records": 1,
+      "Operation": "Spool_Iterator<SpoolIterator>: IterPhyOp LogOp=Filter IterCols(0)('Clientes'[País]) #Records=1 #KeyCols=1 #ValueCols=0",
+      "IndentedOperation": "                        Spool_Iterator<SpoolIterator>: IterPhyOp LogOp=Filter IterCols(0)('Clientes'[País]) #Records=1 #KeyCols=1 #ValueCols=0",
+      "Level": 6,
+      "RowNumber": 7
+    },
+    {
+      "Records": 1,
+      "Operation": "AggregationSpool<GroupBy>: SpoolPhyOp #Records=1",
+      "IndentedOperation": "                            AggregationSpool<GroupBy>: SpoolPhyOp #Records=1",
+      "Level": 7,
+      "RowNumber": 8
+    },
+    {
+      "Records": null,
+      "Operation": "Filter: IterPhyOp LogOp=Filter IterCols(0)('Clientes'[País])",
+      "IndentedOperation": "                                Filter: IterPhyOp LogOp=Filter IterCols(0)('Clientes'[País])",
+      "Level": 8,
+      "RowNumber": 9
+    },
+    {
+      "Records": null,
+      "Operation": "Extend_Lookup: IterPhyOp LogOp=GreaterThanOrEqualTo IterCols(0)('Clientes'[País])",
+      "IndentedOperation": "                                    Extend_Lookup: IterPhyOp LogOp=GreaterThanOrEqualTo IterCols(0)('Clientes'[País])",
+      "Level": 9,
+      "RowNumber": 10
+    },
+    {
+      "Records": 6,
+      "Operation": "Spool_Iterator<SpoolIterator>: IterPhyOp LogOp=Scan_Vertipaq IterCols(0)('Clientes'[País]) #Records=6 #KeyCols=46 #ValueCols=0",
+      "IndentedOperation": "                                        Spool_Iterator<SpoolIterator>: IterPhyOp LogOp=Scan_Vertipaq IterCols(0)('Clientes'[País]) #Records=6 #KeyCols=46 #ValueCols=0",
+      "Level": 10,
+      "RowNumber": 11
+    },
+    {
+      "Records": 6,
+      "Operation": "ProjectionSpool<ProjectFusion<>>: SpoolPhyOp #Records=6",
+      "IndentedOperation": "                                            ProjectionSpool<ProjectFusion<>>: SpoolPhyOp #Records=6",
+      "Level": 11,
+      "RowNumber": 12
+    },
+    {
+      "Records": null,
+      "Operation": "Cache: IterPhyOp #FieldCols=1 #ValueCols=0",
+      "IndentedOperation": "                                                Cache: IterPhyOp #FieldCols=1 #ValueCols=0",
+      "Level": 12,
+      "RowNumber": 13
+    },
+    {
+      "Records": null,
+      "Operation": "GreaterThanOrEqualTo: LookupPhyOp LogOp=GreaterThanOrEqualTo LookupCols(0)('Clientes'[País]) Boolean",
+      "IndentedOperation": "                                        GreaterThanOrEqualTo: LookupPhyOp LogOp=GreaterThanOrEqualTo LookupCols(0)('Clientes'[País]) Boolean",
+      "Level": 10,
+      "RowNumber": 14
+    },
+    {
+      "Records": null,
+      "Operation": "SEARCH: LookupPhyOp LogOp=SEARCH LookupCols(0)('Clientes'[País]) Integer",
+      "IndentedOperation": "                                            SEARCH: LookupPhyOp LogOp=SEARCH LookupCols(0)('Clientes'[País]) Integer",
+      "Level": 11,
+      "RowNumber": 15
+    },
+    {
+      "Records": null,
+      "Operation": "Constant: LookupPhyOp LogOp=Constant String Australia",
+      "IndentedOperation": "                                                Constant: LookupPhyOp LogOp=Constant String Australia",
+      "Level": 12,
+      "RowNumber": 16
+    },
+    {
+      "Records": null,
+      "Operation": "ColValue<'Clientes'[País]>: LookupPhyOp LogOp=ColValue<'Clientes'[País]>'Clientes'[País] LookupCols(0)('Clientes'[País]) String",
+      "IndentedOperation": "                                                ColValue<'Clientes'[País]>: LookupPhyOp LogOp=ColValue<'Clientes'[País]>'Clientes'[País] LookupCols(0)('Clientes'[País]) String",
+      "Level": 12,
+      "RowNumber": 17
+    },
+    {
+      "Records": null,
+      "Operation": "Constant: LookupPhyOp LogOp=Constant Integer 1",
+      "IndentedOperation": "                                                Constant: LookupPhyOp LogOp=Constant Integer 1",
+      "Level": 12,
+      "RowNumber": 18
+    },
+    {
+      "Records": null,
+      "Operation": "Constant: LookupPhyOp LogOp=Constant Integer 0",
+      "IndentedOperation": "                                                Constant: LookupPhyOp LogOp=Constant Integer 0",
+      "Level": 12,
+      "RowNumber": 19
+    },
+    {
+      "Records": null,
+      "Operation": "Constant: LookupPhyOp LogOp=Constant Integer 1",
+      "IndentedOperation": "                                            Constant: LookupPhyOp LogOp=Constant Integer 1",
+      "Level": 11,
+      "RowNumber": 20
+    },
+    {
+      "Records": null,
+      "Operation": "ColPosition<'Clientes'[Ocupación]>: LookupPhyOp LogOp=ColPosition<'Clientes'[Ocupación]>ColPosition<'Clientes'[Ocupación]> LookupCols(0)('Clientes'[Ocupación]) String",
+      "IndentedOperation": "        ColPosition<'Clientes'[Ocupación]>: LookupPhyOp LogOp=ColPosition<'Clientes'[Ocupación]>ColPosition<'Clientes'[Ocupación]> LookupCols(0)('Clientes'[Ocupación]) String",
+      "Level": 2,
+      "RowNumber": 21
+    }
+  ],
+  "LogicalQueryPlanRows": [
+    {
+      "Operation": "Order: RelLogOp DependOnCols()() 0-1 RequiredCols(0, 1)('Clientes'[Ocupación], ''[Cantidad])",
+      "IndentedOperation": "Order: RelLogOp DependOnCols()() 0-1 RequiredCols(0, 1)('Clientes'[Ocupación], ''[Cantidad])",
+      "Level": 0,
+      "RowNumber": 1
+    },
+    {
+      "Operation": "GroupSemiJoin: RelLogOp DependOnCols()() 0-1 RequiredCols(0, 1)('Clientes'[Ocupación], ''[Cantidad])",
+      "IndentedOperation": "    GroupSemiJoin: RelLogOp DependOnCols()() 0-1 RequiredCols(0, 1)('Clientes'[Ocupación], ''[Cantidad])",
+      "Level": 1,
+      "RowNumber": 2
+    },
+    {
+      "Operation": "GroupSemiJoinFilterCluster: RelLogOp DependOnCols()() 0-1 RequiredCols(0, 1)('Clientes'[País], 'Clientes'[Ocupación])",
+      "IndentedOperation": "        GroupSemiJoinFilterCluster: RelLogOp DependOnCols()() 0-1 RequiredCols(0, 1)('Clientes'[País], 'Clientes'[Ocupación])",
+      "Level": 2,
+      "RowNumber": 3
+    },
+    {
+      "Operation": "Filter: RelLogOp DependOnCols()() 0-0 RequiredCols(0)('Clientes'[País])",
+      "IndentedOperation": "            Filter: RelLogOp DependOnCols()() 0-0 RequiredCols(0)('Clientes'[País])",
+      "Level": 3,
+      "RowNumber": 4
+    },
+    {
+      "Operation": "Scan_Vertipaq: RelLogOp DependOnCols()() 0-0 RequiredCols(0)('Clientes'[País])",
+      "IndentedOperation": "                Scan_Vertipaq: RelLogOp DependOnCols()() 0-0 RequiredCols(0)('Clientes'[País])",
+      "Level": 4,
+      "RowNumber": 5
+    },
+    {
+      "Operation": "GreaterThanOrEqualTo: ScaLogOp DependOnCols(0)('Clientes'[País]) Boolean DominantValue=NONE",
+      "IndentedOperation": "                GreaterThanOrEqualTo: ScaLogOp DependOnCols(0)('Clientes'[País]) Boolean DominantValue=NONE",
+      "Level": 4,
+      "RowNumber": 6
+    },
+    {
+      "Operation": "SEARCH: ScaLogOp DependOnCols(0)('Clientes'[País]) Integer DominantValue=NONE",
+      "IndentedOperation": "                    SEARCH: ScaLogOp DependOnCols(0)('Clientes'[País]) Integer DominantValue=NONE",
+      "Level": 5,
+      "RowNumber": 7
+    },
+    {
+      "Operation": "Constant: ScaLogOp DependOnCols()() String DominantValue=Australia",
+      "IndentedOperation": "                        Constant: ScaLogOp DependOnCols()() String DominantValue=Australia",
+      "Level": 6,
+      "RowNumber": 8
+    },
+    {
+      "Operation": "'Clientes'[País]: ScaLogOp DependOnCols(0)('Clientes'[País]) String DominantValue=NONE",
+      "IndentedOperation": "                        'Clientes'[País]: ScaLogOp DependOnCols(0)('Clientes'[País]) String DominantValue=NONE",
+      "Level": 6,
+      "RowNumber": 9
+    },
+    {
+      "Operation": "Constant: ScaLogOp DependOnCols()() Integer DominantValue=1",
+      "IndentedOperation": "                        Constant: ScaLogOp DependOnCols()() Integer DominantValue=1",
+      "Level": 6,
+      "RowNumber": 10
+    },
+    {
+      "Operation": "Constant: ScaLogOp DependOnCols()() Integer DominantValue=0",
+      "IndentedOperation": "                        Constant: ScaLogOp DependOnCols()() Integer DominantValue=0",
+      "Level": 6,
+      "RowNumber": 11
+    },
+    {
+      "Operation": "Constant: ScaLogOp DependOnCols()() Integer DominantValue=1",
+      "IndentedOperation": "                    Constant: ScaLogOp DependOnCols()() Integer DominantValue=1",
+      "Level": 5,
+      "RowNumber": 12
+    },
+    {
+      "Operation": "Scan_Vertipaq: RelLogOp DependOnCols(0)('Clientes'[País]) 1-1 RequiredCols(0, 1)('Clientes'[País], 'Clientes'[Ocupación])",
+      "IndentedOperation": "            Scan_Vertipaq: RelLogOp DependOnCols(0)('Clientes'[País]) 1-1 RequiredCols(0, 1)('Clientes'[País], 'Clientes'[Ocupación])",
+      "Level": 3,
+      "RowNumber": 13
+    },
+    {
+      "Operation": "Sum_Vertipaq: ScaLogOp MeasureRef=[Cantidad] DependOnCols(1)('Clientes'[Ocupación]) Integer DominantValue=BLANK",
+      "IndentedOperation": "        Sum_Vertipaq: ScaLogOp MeasureRef=[Cantidad] DependOnCols(1)('Clientes'[Ocupación]) Integer DominantValue=BLANK",
+      "Level": 2,
+      "RowNumber": 14
+    },
+    {
+      "Operation": "Scan_Vertipaq: RelLogOp DependOnCols(1)('Clientes'[Ocupación]) 2-46 RequiredCols(1, 7)('Clientes'[Ocupación], 'Ventas'[Cantidades])",
+      "IndentedOperation": "            Scan_Vertipaq: RelLogOp DependOnCols(1)('Clientes'[Ocupación]) 2-46 RequiredCols(1, 7)('Clientes'[Ocupación], 'Ventas'[Cantidades])",
+      "Level": 3,
+      "RowNumber": 15
+    },
+    {
+      "Operation": "'Ventas'[Cantidades]: ScaLogOp DependOnCols(7)('Ventas'[Cantidades]) Integer DominantValue=NONE",
+      "IndentedOperation": "            'Ventas'[Cantidades]: ScaLogOp DependOnCols(7)('Ventas'[Cantidades]) Integer DominantValue=NONE",
+      "Level": 3,
+      "RowNumber": 16
+    },
+    {
+      "Operation": "ColPosition<'Clientes'[Ocupación]>: ScaLogOp DependOnCols(0)('Clientes'[Ocupación]) String DominantValue=NONE",
+      "IndentedOperation": "    ColPosition<'Clientes'[Ocupación]>: ScaLogOp DependOnCols(0)('Clientes'[Ocupación]) String DominantValue=NONE",
+      "Level": 1,
+      "RowNumber": 17
+    }
+  ]
+}

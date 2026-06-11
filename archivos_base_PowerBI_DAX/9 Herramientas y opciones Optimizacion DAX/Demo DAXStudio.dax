@@ -1,0 +1,8 @@
+﻿DEFINE 
+
+---- MODEL MEASURES BEGIN ----
+MEASURE '_Cálculos'[Importes] = SUMX(Ventas, Ventas[Cantidades] * Ventas[Precios])
+MEASURE '_Cálculos'[Importes Catálogo] = SUMX(Ventas, Ventas[Cantidades] * RELATED(Productos[Precio Catálogo]))
+---- MODEL MEASURES END ----
+
+MEASURE '_Cálculos'[Diferencia Importes] = [Importes Catálogo] - [Importes]

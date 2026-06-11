@@ -43,13 +43,43 @@ const tableItems = [
     body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tristique orci sed ipsum maximus sollicitudin. Phasellus sed porta neque. Morbi at convallis risus. Aliquam et lorem venenatis, sodales eros sit amet, lobortis risus. Proin ac condimentum ipsum. Vestibulum vestibulum fermentum venenatis. Quisque sodales velit erat, eu scelerisque nisi feugiat ac. Nulla congue tellus vel nunc euismod interdum. Nulla eget mattis est, et lacinia velit. Cras aliquam eu diam non laoreet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Cras ornare erat nec lacus sagittis porttitor. Vivamus sodales nisi et nunc suscipit, imperdiet tristique est iaculis. Quisque vitae massa in sem pretium venenatis.",
     img: "grey_ellipse"
   },
+  { 
+    type: "normal",
+    sender: "jim jo",
+    date: "20 June 2013",
+    subject: "Recordatorio Consulta ",
+    body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tristique orci sed ipsum maximus sollicitudin. Phasellus sed porta neque. Morbi at convallis risus. Aliquam et lorem venenatis, sodales eros sit amet, lobortis risus. Proin ac condimentum ipsum. Vestibulum vestibulum fermentum venenatis. Quisque sodales velit erat, eu scelerisque nisi feugiat ac. Nulla congue tellus vel nunc euismod interdum. Nulla eget mattis est, et lacinia velit. Cras aliquam eu diam non laoreet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Cras ornare erat nec lacus sagittis porttitor. Vivamus sodales nisi et nunc suscipit, imperdiet tristique est iaculis. Quisque vitae massa in sem pretium venenatis.",
+    img: "grey_ellipse"
+  },
+  { 
+    type: "normal",
+    sender: "Jimena González",
+    date: "20 June 2013",
+    subject: "Recordatorio Consulta ",
+    body: "Jimena ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tristique orci sed ipsum maximus sollicitudin. Phasellus sed porta neque. Morbi at convallis risus. Aliquam et lorem venenatis, sodales eros sit amet, lobortis risus. Proin ac condimentum ipsum. Vestibulum vestibulum fermentum venenatis. Quisque sodales velit erat, eu scelerisque nisi feugiat ac. Nulla congue tellus vel nunc euismod interdum. Nulla eget mattis est, et lacinia velit. Cras aliquam eu diam non laoreet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Cras ornare erat nec lacus sagittis porttitor. Vivamus sodales nisi et nunc suscipit, imperdiet tristique est iaculis. Quisque vitae massa in sem pretium venenatis.",
+    img: "grey_ellipse"
+  },{ 
+    type: "normal",
+    sender: "Jimena Josees",
+    date: "20 June 2013",
+    subject: "Recordatorio Consulta ",
+    body: "Josees ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tristique orci sed ipsum maximus sollicitudin. Phasellus sed porta neque. Morbi at convallis risus. Aliquam et lorem venenatis, sodales eros sit amet, lobortis risus. Proin ac condimentum ipsum. Vestibulum vestibulum fermentum venenatis. Quisque sodales velit erat, eu scelerisque nisi feugiat ac. Nulla congue tellus vel nunc euismod interdum. Nulla eget mattis est, et lacinia velit. Cras aliquam eu diam non laoreet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Cras ornare erat nec lacus sagittis porttitor. Vivamus sodales nisi et nunc suscipit, imperdiet tristique est iaculis. Quisque vitae massa in sem pretium venenatis.",
+    img: "grey_ellipse"
+  },{ 
+    type: "normal",
+    sender: "Jimena Flores",
+    date: "20 June 2013",
+    subject: "Recordatorio Consulta ",
+    body: "Flores ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tristique orci sed ipsum maximus sollicitudin. Phasellus sed porta neque. Morbi at convallis risus. Aliquam et lorem venenatis, sodales eros sit amet, lobortis risus. Proin ac condimentum ipsum. Vestibulum vestibulum fermentum venenatis. Quisque sodales velit erat, eu scelerisque nisi feugiat ac. Nulla congue tellus vel nunc euismod interdum. Nulla eget mattis est, et lacinia velit. Cras aliquam eu diam non laoreet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Cras ornare erat nec lacus sagittis porttitor. Vivamus sodales nisi et nunc suscipit, imperdiet tristique est iaculis. Quisque vitae massa in sem pretium venenatis.",
+    img: "grey_ellipse"
+  },
 
   
 ];
 
 export default function AlertsMessagingPage() {
 
-  const [view, setView] = useState<"inbox" | "sent" | "new">("inbox");
+  const [view, setView] = useState<"inbox" | "sent" | "new">("inbox"); 
 
   const [inbox, setInbox] = useState(tableItems);
   const [sent, setSent] = useState<any[]>([]);
@@ -61,9 +91,9 @@ export default function AlertsMessagingPage() {
     subject: string;
   } | null>(null);
 
-  const [searchTerm, setSearchTerm] = useState("");
+  const [searchTerm, setSearchTerm] = useState("");// Estado para el apartado de búsqueda
 
-  const filteredInbox = inbox.filter(item =>
+  const filteredInbox = inbox.filter(item => // Filtra los mensajes del inbox según el término de búsqueda
     item.sender.toLowerCase().includes(searchTerm.toLowerCase()) ||
     item.subject.toLowerCase().includes(searchTerm.toLowerCase()) ||
     item.body.toLowerCase().includes(searchTerm.toLowerCase())
@@ -117,15 +147,15 @@ export default function AlertsMessagingPage() {
     <AlertsMessaging
       text="ALERTS AND MESSAGING"
       view={view}
-      inboxItems={view === "inbox" ? filteredInbox : inbox}
-      sentItems={view === "sent" ? filteredSent : sent}
-      openedIndex={openedIndex}
-      onOpenMessage={setOpenedIndex}
-      onReplyMessage={handleReplyMessage}
-      onDeleteMessage={handleDeleteMessage}
-      onSend={handleSend}
-      onSearch={setSearchTerm}
-      searchValue={searchTerm}
+      inboxItems={filteredInbox} // Pasa los mensajes filtrados al componente
+      sentItems={filteredSent}
+      openedIndex={openedIndex} // Índice del mensaje abierto
+      onOpenMessage={setOpenedIndex} // Función para abrir un mensaje
+      onReplyMessage={handleReplyMessage} // Función para responder a un mensaje
+      onDeleteMessage={handleDeleteMessage} // Función para eliminar un mensaje
+      onSend={handleSend} // Función para enviar un mensaje
+      onSearch={setSearchTerm} // Función para actualizar el término de búsqueda
+      searchValue={searchTerm} // Valor actual del término de búsqueda
       onInbox={() => {
         setView("inbox");
         setOpenedIndex(null);

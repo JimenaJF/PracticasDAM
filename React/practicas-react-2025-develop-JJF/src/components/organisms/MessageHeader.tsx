@@ -7,7 +7,8 @@ export function MessageHeader({
   onInbox,
   onSent,
   inboxCount,
-  searchValue
+  searchValue, 
+  view
 }: {
   onSearch: (value: string) => void;
   onNewMessage: () => void;
@@ -15,6 +16,7 @@ export function MessageHeader({
   onSent: () => void;
   inboxCount: number;
   searchValue: string;
+  view: "inbox" | "sent" | "new";
 }) {
 
   
@@ -32,12 +34,13 @@ export function MessageHeader({
         onNewMessage={onNewMessage}
         onInbox={onInbox}
         onSent={onSent}
+        view={view}
       />
 
-      <SearchBar
-        value={searchValue}
-        onChange={onSearch}
-      />
+        <SearchBar
+          value={searchValue}
+          onSearch={onSearch}
+        />
     </div>
   );
 }

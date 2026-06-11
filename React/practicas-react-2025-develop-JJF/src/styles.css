@@ -3,6 +3,481 @@ body {
     color: #555555;
 }
 
+
+/* ── TARJETA DEL MODAL ── */
+.event_form {
+  background: white;
+  border-radius: 12px;
+  width: 420px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  animation: fadeInScale 0.2s ease;  /* animación de entrada ✨ */
+}
+
+/* ── ANIMACIÓN ── */
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ── HEADER ROJO ── */
+.form_header {
+  background-color: #e8503a;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  gap: 12px;
+}
+
+.form_title_input {
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.6);
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  flex: 1;
+  outline: none;
+  padding: 4px 0;
+}
+
+.form_title_input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.form_close {
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  background: rgba(255,255,255,0.2);
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+  flex-shrink: 0;
+}
+
+.form_close:hover {
+  background: rgba(255,255,255,0.35);
+}
+
+/* ── BODY ── */
+.form_body {
+  padding: 24px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.form_subtitle_input {
+  border: none;
+  border-bottom: 1px solid #ddd;
+  padding: 6px 0;
+  font-size: 14px;
+  color: #555;
+  outline: none;
+  width: 100%;
+}
+
+.form_subtitle_input::placeholder {
+  color: #bbb;
+}
+
+/* ── FECHA Y HORA ── */
+.form_datetime {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  color: #888;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+.form_datetime input[type="time"] {
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 4px 8px;
+  font-size: 14px;
+  color: #333;
+  outline: none;
+  cursor: pointer;
+}
+
+/* ── DESCRIPCIÓN ── */
+.form_description {
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 14px;
+  color: #444;
+  resize: vertical;
+  min-height: 80px;
+  outline: none;
+  font-family: inherit;
+  transition: border 0.2s;
+}
+
+.form_description:focus {
+  border-color: #e8503a;
+}
+
+/* ── BOTONES ── */
+.form_buttons {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  margin-top: 4px;
+}
+
+.form_buttons .btn_reply,
+.form_buttons .btn_delete {
+  padding: 10px 28px;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  font-size: 13px;
+  cursor: pointer;
+  letter-spacing: 1px;
+  transition: opacity 0.2s;
+}
+
+.form_buttons .btn_reply:hover,
+.form_buttons .btn_delete:hover {
+  opacity: 0.85;
+}
+
+/* ── TARJETA completa ── */
+.ev_card {
+  overflow: hidden;
+  margin-bottom: 16px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  flex-shrink: 0;
+}
+
+/* ── HEADER rojo ── */
+.ev_header {
+  background: rgb(220, 80, 60);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 18px;
+}
+
+.ev_icon {
+  width: 36px;
+  height: 36px;
+  filter: brightness(0) invert(1); /* icono blanco */
+  flex-shrink: 0;
+}
+
+.ev_header_text {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  flex: 1;
+}
+
+.ev_title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #fff;
+  margin: 0;
+}
+
+.ev_subtitle {
+  font-size: 14px;
+  color: rgba(255,255,255,0.9);
+  font-weight: 400;
+}
+
+.ev_close {
+  background: none;
+  border: 2px solid rgba(255,255,255,0.8);
+  color: #fff;
+  width: 30px;
+  height: 30px;
+  font-size: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* ── BODY gris ── */
+.ev_body {
+  background: #e8e8e8;
+  padding: 20px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.ev_datetime {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.ev_date_label {
+  font-size: 14px;
+  color: #555;
+  font-weight: 500;
+}
+
+.ev_time {
+  font-size: 36px;
+  font-weight: 700;
+  color: #333;
+}
+
+.ev_desc {
+  font-size: 14px;
+  color: #444;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.ev_buttons {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+/* ── Inputs de edición ── */
+.ev_edit_title {
+  background: rgba(255,255,255,0.2);
+  border: 1px solid rgba(255,255,255,0.6);
+  color: #fff;
+  font-size: 20px;
+  font-weight: 700;
+  padding: 4px 8px;
+  width: 100%;
+  outline: none;
+}
+
+.ev_edit_subtitle {
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.5);
+  color: #fff;
+  font-size: 13px;
+  padding: 4px 8px;
+  width: 100%;
+  outline: none;
+  font-style: italic;
+}
+
+.ev_textarea {
+  width: 100%;
+  min-height: 100px;
+  border: 1px solid #ccc;
+  padding: 10px;
+  font-size: 14px;
+  resize: vertical;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.ev_time_input {
+  font-size: 28px;
+  font-weight: 700;
+  border: 1px solid #ccc;
+  padding: 4px 8px;
+  outline: none;
+}
+
+/* ── OVERLAY ── */
+.add_event_overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  backdrop-filter: blur(2px);
+}
+.events_scroll {
+  max-height: 380px;      /*  ajusta a tu gusto */
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+
+  padding-right: 4px;
+}
+
+/* ── CARD — sin border-radius, igual que tus eventos ── */
+.ef_card {
+  width: 480px;
+  background: #e8e8e8;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.22);
+  animation: ef_in 0.2s ease;
+}
+
+@keyframes ef_in {
+  from { opacity: 0; transform: translateY(-14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── HEADER — rojo igual que header_test ── */
+.ef_header {
+  background: #f05a3a;         
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+}
+
+.ef_header_icon {
+  font-size: 22px;
+  flex-shrink: 0;
+}
+
+/* Input del título dentro del header rojo */
+.ef_input_title {
+  flex: 1;
+  border: none;
+  padding: 8px 12px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #333;
+  background: #fff;
+  outline: none;
+}
+
+.ef_input_title::placeholder {
+  color: #aaa;
+  font-weight: 400;
+}
+
+/* Botón X — igual que tu close_cross */
+.ef_close {
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 22px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  opacity: 0.9;
+  transition: opacity 0.2s;
+}
+
+.ef_close:hover {
+  opacity: 1;
+}
+
+/* ── BODY — gris claro igual que body_test ── */
+.ef_body {
+  background: #e0e0e0;
+  padding: 16px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Fila mes + time — igual que test_date */
+.ef_row_time {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #555;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.ef_input_time {
+  border: 1px solid #ccc;
+  padding: 5px 10px;
+  font-size: 14px;
+  color: #333;
+  background: #fff;
+  outline: none;
+}
+
+.ef_input_time:focus {
+  border-color: rgb(1, 209, 216);
+}
+
+/* Textarea — igual que test_summary */
+.ef_textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  background: #fff;
+  font-size: 14px;
+  color: #333;
+  height: 80px;
+  resize: vertical;
+  font-family: inherit;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.ef_textarea:focus {
+  border-color: rgb(1, 209, 216);
+}
+
+/* ── FOOTER — gris más oscuro con botones ── */
+.ef_footer {
+  background: #d8d8d8;
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  padding: 14px 20px;
+}
+
+/* SAVE — cyan igual que btn_reply */
+.ef_btn_save {
+  background: rgb(1, 209, 216);
+  border: none;
+  padding: 10px 36px;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: #fff;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.ef_btn_save:hover {
+  opacity: 0.85;
+}
+
+/* CANCEL — rojo igual que btn_delete */
+.ef_btn_cancel {
+  background: #f05a3a;
+  border: none;
+  padding: 10px 36px;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: #fff;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.ef_btn_cancel:hover {
+  opacity: 0.85;
+}
+
 /*HEADER STYLE*/
 
 header {
@@ -363,27 +838,31 @@ main {
     margin-top: 30px;
     margin-bottom: 50px;
     color: #555555;
+    width: 100%;
+
 }
 .container_messages {
-    margin-left: 100px;
-    margin-right: 100px;
+    margin-left: 20px;
+    margin-right: 20px;
 }
 .header_messages, .mail_menu {
     display: flex;
     flex-direction: row;
     border: 1px solid lightgrey;
     align-items: center;
-    gap: 30px;
+    gap: 0px;
     height: 45px;
 }
 .btn_check {
-    margin-left: 9px;
-    width: 0;
+    padding: 0PX 15px;
+    display: flex;
+    align-items: center;
+   
 }
 .ellipse_inbox {
     position: absolute;
     margin-top: -35px;
-    margin-left: 235px;
+    margin-left: 229px;
     background-color: rgb(240, 47, 47);
     color: white;
     font-weight: bold;
@@ -418,6 +897,7 @@ button[type="submit"]:hover {
 }
 .table_mail,
 .tr_mail {
+    width: 100%;
     border: 1px solid lightgrey;
     border-collapse: collapse;
     height: 35px;
@@ -440,6 +920,7 @@ button[type="submit"]:hover {
     width: 2%;
     text-align: center;
 }
+
 .ellipse_mail, .grey_ellipse {
     height: 15px;
     margin-right: 10px;
@@ -464,6 +945,11 @@ button[type="submit"]:hover {
     float: right;
     margin-right: 30px;
     margin-bottom: 20px;
+}
+.btn_container {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
 }
 .btn_reply {
     background-color:rgb(1, 209, 216);
@@ -495,8 +981,85 @@ button[type="submit"]:hover {
     align-items: center;
     padding: 0px 15px 0px 15px;
 }
+/* Contenedor principal */
+.new_message_container {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 24px 28px;
+  margin: 0px;
+  border: 1px solid #ddd;
+  background-color: #fff;
+  width: 100%;
+  box-sizing: border-box;
+
+}
+
+/* Cada fila label + input */
+.new_msg_row {
+  display: flex;
+  align-items: center;   
+  gap: 16px;
+}
+
+.new_msg_row span,       
+.new_msg_row label {
+  width: 70px;          
+  font-weight: bold;
+  font-size: 14px;
+  color: #333;
+  flex-shrink: 0;       
+}
+
+/* Inputs */
+.new_msg_row input {
+  flex: 1;               
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  outline: none;
+  transition: border 0.2s;
+}
+
+.new_msg_row input:focus {
+  border-color: #f26522;
+}
+
+/* Textarea */
+.new_msg_row textarea {
+  flex: 1;
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  resize: vertical;
+  outline: none;
+  transition: border 0.2s;
+  font-family: inherit;   
+}
+
+.new_msg_row textarea:focus {
+  border-color: #f26522;
+}
+
+/* Alinear textarea al top cuando hay label */
+.new_msg_row:has(textarea) {
+  align-items: flex-start; 
+  padding-top: 4px;
+}
+
+
+/* Botones */
+.buttons {
+  display: flex;
+  gap: 12px;
+  margin-left: 86px;     
+  margin-top: 4px;
+}
+
 .sent_msg {
-    background-color: lightgrey;
+    background-color: rgb(255, 255, 255);
     height: 45px;
     display: flex;
     align-items: center;
@@ -505,6 +1068,10 @@ button[type="submit"]:hover {
 .previous_msg {
     background-color: lightgrey;
     padding-left: 10px;
+    white-space: nowrap;   
+    width: fit-content;
+    height: 35px;
+    
 }
 #span2 {
     visibility: hidden;
@@ -513,6 +1080,34 @@ button[type="submit"]:hover {
 }
 
 /*Alerts responsive: smartphone*/
+.new_event_title_input {
+    border: none;
+    background: transparent;
+    color: white;
+    font-size: 16px;
+    outline: none;
+    width: 100%;
+}
+
+.new_event_title_input::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.new_event_time {
+    border: none;
+    background: transparent;
+    font-size: 14px;
+}
+
+.new_event_desc {
+    width: 93%;
+    height: 60px;
+    border: none;
+    resize: vertical;
+    padding: 8px;
+    font-family: inherit;
+    margin-left: 15px;
+}
 
 @media screen and (min-width: 320px) and (max-width: 640px) {
     .title {
@@ -533,7 +1128,7 @@ button[type="submit"]:hover {
         flex-direction: row;
         border: 1px solid lightgrey;
         align-items: center;
-        gap: 30px;
+        gap: 0px;
         height: 45px;
     }
     .container_messages {
@@ -544,11 +1139,7 @@ button[type="submit"]:hover {
     .btn_check {
         margin-left: 0;
     }
-    .ellipse_inbox {
-        margin-left: 210px;
-        font-size: x-small;
-        padding: 10px 12px;
-    }
+    
     form {
         margin-right: 10px;
     }
@@ -661,14 +1252,14 @@ button[type="submit"]:hover {
     margin-top: 0;
 }
 .doctor {
-    background-image: url("./assets/images/Rectangle_2.png");
+    background-image: url(/src/assets/images/Rectangle_2.png);
     display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
+    /* flex-direction: row; */
+    /* flex-wrap: nowrap; */
     color: white;
     align-items: center;
-    margin-bottom: 10px;
     justify-items: flex-start;
+    /* justify-content: space-between; */
 }
 .img_phone,
 .img_calendar {
@@ -687,6 +1278,7 @@ button[type="submit"]:hover {
 .cross {
     align-self: flex-start;
     margin-left: auto;
+    height: 30px;
 }
 .cross > img {
     height: 30px;
@@ -708,6 +1300,7 @@ button[type="submit"]:hover {
 .test_type > p {
     margin: 0;
     margin-bottom: 10px;
+
 }
 .test_date > p {
     margin: 0;
@@ -716,6 +1309,7 @@ button[type="submit"]:hover {
 .test_type > h1 {
     margin-bottom: 0;
     margin-top: 10px;
+
 }
 .test_date,
 .test_summary {
@@ -747,6 +1341,7 @@ button[type="submit"]:hover {
 }
 .calendar {
     width: 50%;
+    height: 500px;
 }
 .table_calendar {
     width: 100%;
@@ -803,16 +1398,22 @@ button[type="submit"]:hover {
     .reminders_calendar {
         display: flex;
         justify-content: center;
+        height: 400px;
     }
     .container_calendar {
-        flex-direction: column;
         margin-left: 0;
         margin-right: 0;
+        display: flex;
+        align-items: flex-start;
     }
     .reminders,
     .calendar {
         width: 100%;
+        flex: 1;  
         font-size: x-small;
+        max-height: 500px;
+        overflow-y: auto;  
+        
     }
     .nav_calendar {
         margin-bottom: 10px;
@@ -844,7 +1445,9 @@ button[type="submit"]:hover {
         justify-content: center;
     }
     .container_calendar {
+        display: flex;
         flex-direction: column;
+        align-items: flex-start;
         margin-left: 0;
         margin-right: 0;
     }

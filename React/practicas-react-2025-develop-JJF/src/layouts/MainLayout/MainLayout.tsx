@@ -6,7 +6,7 @@ export default function MainLayout() {
     <div>
       <Header
                     valueNotification={6}
-                    clientName="Yago Lopez García"
+                    clientName="Cornelia Lopez García"
                     textValueSettings="SETTINGS"
                     textLogoutButton="LOGOUT"
               />

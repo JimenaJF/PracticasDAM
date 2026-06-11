@@ -7,13 +7,15 @@ export default function TableItem({
   date,
   subject,
   img,
-  arrowClass = "arrow_closed"
+  arrowClass = "arrow_closed",
+  isRead = true
 }: {
   sender: string;
   date: string;
   subject: string;
   img: keyof typeof IMAGES;
   arrowClass?: string;
+  isRead?: boolean;
 }) {
   return (
     <>
@@ -22,8 +24,13 @@ export default function TableItem({
       </td>
 
       <td className="td_sender">
-        <Avatar name={img } className="ellipse_mail" />
+
+        <span className={isRead ? "circle_read" : "circle_unread"}></span>
+
+        <Avatar name={isRead ? "grey_ellipse" : img} className="ellipse_mail" />
+
         {sender}
+        
       </td>
 
       <td className="td_subject">{subject}</td>

@@ -6,7 +6,7 @@ interface IconProps {
   name: keyof typeof IMAGES | string;
   className?: string;
   id?: string;
-  onClick?: () => void;
+  onClick?:  (e: React.MouseEvent<HTMLImageElement>) => void;
 
 }
 

@@ -15,8 +15,11 @@ export default function TableItemOpened({
       <td colSpan={5} className="opened_mail">
         <h1>{subject}</h1>
         <p>{body}</p>
-        <ButtonMail value="DELETE" className="btn_delete" onClick={onDelete} />
-        <ButtonMail value="REPLY" className="btn_reply" onClick={onReply} />
+
+        <div className="btn_container">
+          <ButtonMail value="DELETE" className="btn_delete" onClick={onDelete} />
+          <ButtonMail value="REPLY" className="btn_reply" onClick={onReply} />
+        </div>
 
       </td>
 
